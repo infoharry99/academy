@@ -2,97 +2,117 @@
 
 @section('content')
 
-<div style="max-width:760px;margin:3rem auto;padding:0 1.5rem 6rem">
+@php
+    $total = 0;
+@endphp
 
-    {{-- Page title --}}
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1.5px solid #d0e2f7">
-        <div style="width:44px;height:44px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.25rem">🛒</div>
+<div style="max-width:900px;margin:3rem auto;padding:0 1.5rem 6rem">
+
+    <!-- HEADER -->
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:2rem;border-bottom:1.5px solid #d0e2f7;padding-bottom:1.2rem">
+        <div style="width:46px;height:46px;border-radius:12px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.4rem">🛒</div>
         <div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.05em;color:#0d1f3c">My Cart</div>
-            <div style="font-size:0.8rem;color:#8aaac8;font-weight:500">{{ count($cart) }} item(s) in your cart</div>
+            <div style="font-size:1.8rem;font-weight:700">My Cart</div>
+            <div style="font-size:0.85rem;color:#8aaac8">{{ count($cart) }} item(s)</div>
         </div>
     </div>
 
-    @if(count($cart) === 0)
+    @if(count($cart) == 0)
 
-        {{-- Empty state --}}
-        <div style="text-align:center;padding:4rem 2rem;background:#fff;border:1px solid #d0e2f7;border-radius:16px">
-            <div style="font-size:3rem;margin-bottom:1rem">🛍️</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:#0d1f3c;margin-bottom:0.5rem">Your cart is empty</div>
-            <p style="color:#8aaac8;font-size:0.9rem;margin-bottom:1.5rem">Browse our trainings and courses to get started.</p>
-            <a href="/"
-               style="display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:10px;background:#1a6fd4;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none"
-            >Explore Programs →</a>
+        <!-- EMPTY -->
+        <div style="text-align:center;padding:4rem;background:#fff;border-radius:16px">
+            <h2>Cart is empty 😢</h2>
+            <a href="/" style="margin-top:10px;display:inline-block;background:#1a6fd4;color:#fff;padding:10px 20px;border-radius:8px">
+                Go Shopping
+            </a>
         </div>
 
     @else
 
-        {{-- Cart items --}}
-        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:1.5rem">
+        <!-- CART ITEMS -->
+        <div style="display:flex;flex-direction:column;gap:14px">
+
             @foreach($cart as $c)
-            <div style="background:#fff;border:1px solid #d0e2f7;border-radius:14px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;transition:box-shadow 0.18s"
-                 onmouseover="this.style.boxShadow='0 4px 16px rgba(26,111,212,0.10)'"
-                 onmouseout="this.style.boxShadow='none'">
 
-                <div style="display:flex;align-items:center;gap:14px">
+            @php
+                $item = $c->type === 'training' ? $c->training : $c->course;
+                $price = $item->sale_price ?? $item->price ?? 0;
+                $qty = $c->qty ?? 1;
+                $subtotal = $price * $qty;
+                $total += $subtotal;
+            @endphp
 
-                    {{-- Type icon --}}
-                    <div style="width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;
-                        {{ $c->type === 'training' ? 'background:#dcfce7' : 'background:#dbeafe' }}">
-                        {{ $c->type === 'training' ? '🏋️' : '📚' }}
-                    </div>
+            <div style="background:#fff;border-radius:14px;padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center">
 
+                <!-- LEFT -->
+                <div style="display:flex;gap:14px;align-items:center">
+
+                    <!-- IMAGE -->
+                    @if($item && $item->image)
+                        <img src="{{ asset('products/'.$item->image) }}"
+                             style="width:70px;height:70px;border-radius:10px;object-fit:cover">
+                    @else
+                        <div style="width:70px;height:70px;background:#eee;border-radius:10px"></div>
+                    @endif
+
+                    <!-- DETAILS -->
                     <div>
-                        <div style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:3px;
-                            {{ $c->type === 'training' ? 'color:#16a34a' : 'color:#2563eb' }}">
-                            {{ ucfirst($c->type) }}
+                        <div style="font-weight:600;font-size:1rem">
+                            {{ $item->title ?? 'Item #'.$c->item_id }}
                         </div>
-                        <div style="font-size:0.95rem;font-weight:600;color:#0d1f3c">
-                            {{ $c->type === 'training' ? ($c->training->title ?? 'Training #'.$c->item_id) : ($c->course->title ?? 'Course #'.$c->item_id) }}
+
+                        <div style="font-size:0.8rem;color:#888;margin-top:3px">
+                            {{ \Illuminate\Support\Str::limit($item->description ?? '', 60) }}
                         </div>
-                        <div style="font-size:0.8rem;color:#8aaac8;margin-top:2px">Item ID: {{ $c->item_id }}</div>
+
+                        <div style="margin-top:6px;font-size:0.9rem;color:#16a34a;font-weight:600">
+                            ₹{{ $price }} × {{ $qty }}
+                        </div>
                     </div>
                 </div>
 
-                {{-- Remove button --}}
-                <a href="/cart/remove/{{ $c->id }}"
-                   style="display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:8px;background:#fee2e2;color:#dc2626;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid #fca5a5;transition:background 0.18s;flex-shrink:0"
-                   onmouseover="this.style.background='#fecaca'"
-                   onmouseout="this.style.background='#fee2e2'"
-                >✕ Remove</a>
-
-            </div>
-            @endforeach
-        </div>
-
-        {{-- Summary box --}}
-        <div style="background:linear-gradient(135deg,#e3eefd,#f0f6ff);border:1px solid #d0e2f7;border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.5rem">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-                <div>
-                    <div style="font-size:0.8rem;color:#4a6890;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Total Items</div>
-                    <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.03em;color:#0d1f3c">{{ count($cart) }}</div>
-                </div>
+                <!-- RIGHT -->
                 <div style="text-align:right">
-                    <div style="font-size:0.8rem;color:#4a6890;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Ready to checkout?</div>
-                    <div style="font-size:0.85rem;color:#8aaac8;margin-top:2px">Review your items above</div>
+
+                    <!-- SUBTOTAL -->
+                    <div style="font-size:1rem;font-weight:700;color:#0d1f3c">
+                        ₹{{ $subtotal }}
+                    </div>
+
+                    <!-- REMOVE -->
+                    <a href="/cart/remove/{{ $c->id }}"
+                       style="margin-top:6px;display:inline-block;color:red;font-size:0.8rem">
+                        Remove
+                    </a>
+
                 </div>
+
             </div>
+
+            @endforeach
+
         </div>
 
-        {{-- Place order --}}
-        <a href="/place-order"
-           style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:12px;background:#16a34a;color:#fff;font-size:1rem;font-weight:600;text-decoration:none;transition:background 0.18s;font-family:'DM Sans',sans-serif"
-           onmouseover="this.style.background='#15803d'"
-           onmouseout="this.style.background='#16a34a'"
-        >
-            ✅ Place Order
-        </a>
+        <!-- SUMMARY -->
+        <div style="margin-top:2rem;background:#f0f6ff;padding:1.5rem;border-radius:16px">
 
-        <a href="/"
-           style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:11px;border-radius:12px;background:#e3eefd;color:#1a6fd4;font-size:0.9rem;font-weight:600;text-decoration:none;border:1px solid #93c5fd;transition:background 0.18s"
-           onmouseover="this.style.background='#c8dff9'"
-           onmouseout="this.style.background='#e3eefd'"
-        >← Continue Shopping</a>
+            <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+                <span>Total Items:</span>
+                <strong>{{ count($cart) }}</strong>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;font-size:1.2rem">
+                <span>Total Amount:</span>
+                <strong style="color:#16a34a">₹{{ $total }}</strong>
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <a href="/place-order"
+           style="margin-top:1.5rem;display:block;text-align:center;background:#16a34a;color:#fff;padding:14px;border-radius:12px;font-weight:600">
+            Place Order
+        </a>
 
     @endif
 

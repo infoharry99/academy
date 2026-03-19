@@ -173,28 +173,27 @@ body{
         @if(session('vendor_type') == 'training') 
         <a href="/vendor/training" class="nav-link">
             <div class="nav-icon" style="background:var(--green-light)">🏋️</div>
-            Trainings
+            Products
         </a>
-        @endif 
-
-        <!-- @if(session('vendor_type') == 'course')  -->
-        <a href="/vendor/course" class="nav-link">
-            <div class="nav-icon" style="background:#dbeafe">📚</div>
-            Courses
-        </a>
-        <!-- @endif  -->
-
-        <div class="nav-label">Account</div>
-
-        <a href="/vendor/profile" class="nav-link">
-            <div class="nav-icon" style="background:var(--surface-2)">👤</div>
-            Profile
-        </a>
-
-        <a href="/vendor/orders" class="nav-link">
+         <a href="/vendor/training/order" class="nav-link">
             <div class="nav-icon" style="background:#fef3c7">📦</div>
             Orders
         </a>
+        @endif 
+
+        @if(session('vendor_type') == 'course') 
+        <a href="/vendor/course" class="nav-link">
+            <div class="nav-icon" style="background:#dbeafe">📚</div>
+            Training
+        </a>
+         <a href="/vendor/course/order" class="nav-link">
+            <div class="nav-icon" style="background:#fef3c7">📦</div>
+            Orders
+        </a>
+        @endif 
+
+
+       
 
         <a href="/vendor/logout" class="nav-link danger">
             <div class="nav-icon" style="background:var(--red-light)">🚪</div>
@@ -203,18 +202,7 @@ body{
 
     </nav>
 
-    {{-- Vendor info strip --}}
-    <div class="sidebar-vendor">
-        <div class="vendor-avatar">🏪</div>
-        <div>
-            <div class="vendor-name">Vendor Name</div>
-            {{-- Show dynamic type if available --}}
-            <div class="vendor-type">
-                Training Vendor
-                {{-- {{ ucfirst(session('vendor_type', 'vendor')) }} --}}
-            </div>
-        </div>
-    </div>
+    
 
 </aside>
 

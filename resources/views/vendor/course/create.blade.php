@@ -1,6 +1,6 @@
 @extends('vendor.layout')
 
-@section('page_title', 'Add Course')
+@section('page_title', 'Add training')
 
 @section('content')
 
@@ -10,8 +10,8 @@
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:2rem;padding-bottom:1.25rem;border-bottom:1.5px solid #d0e2f7">
         <div style="width:44px;height:44px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.25rem">📚</div>
         <div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.05em;color:#0d1f3c">Add Course</div>
-            <div style="font-size:0.8rem;color:#8aaac8;font-weight:500">Fill in the details to list a new course</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.05em;color:#0d1f3c">Add training</div>
+            <div style="font-size:0.8rem;color:#8aaac8;font-weight:500">Fill in the details to list a new training</div>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
 
                 {{-- Title --}}
                 <div style="margin-bottom:1.25rem">
-                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Course Title</label>
+                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">training Title</label>
                     <input
                         name="title"
                         type="text"
@@ -83,7 +83,7 @@
                         style="flex:1;padding:11px;border-radius:10px;background:#2563eb;color:#fff;font-size:0.95rem;font-weight:600;border:none;cursor:pointer;transition:background 0.18s;font-family:'DM Sans',sans-serif"
                         onmouseover="this.style.background='#1d4ed8'"
                         onmouseout="this.style.background='#2563eb'"
-                    >✅ Save Course</button>
+                    >✅ Save training</button>
 
                     <a href="/vendor/course"
                        style="padding:11px 20px;border-radius:10px;background:#e3eefd;color:#1a6fd4;font-size:0.95rem;font-weight:600;text-decoration:none;border:1px solid #93c5fd;transition:background 0.18s;display:inline-flex;align-items:center"

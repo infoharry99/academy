@@ -9,7 +9,7 @@
     <div style="background:linear-gradient(135deg,#fef3c7,#fde68a);padding:2rem 2rem 1.5rem;text-align:center">
         <div style="width:56px;height:56px;border-radius:50%;background:rgba(180,83,9,0.12);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1rem">🏪</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:#0d1f3c">Become a Seller</div>
-        <div style="font-size:0.85rem;color:#92400e;margin-top:4px">List your trainings &amp; courses on Sports Academy</div>
+        <div style="font-size:0.85rem;color:#92400e;margin-top:4px">List your products &amp; courses on Sports Academy</div>
     </div>
 
     {{-- Form body --}}
@@ -78,7 +78,7 @@
                         onfocus="this.style.borderColor='#1a6fd4';this.style.background='#fff'"
                         onblur="this.style.borderColor='#d0e2f7';this.style.background='#f0f6ff'"
                     >
-                        <option value="training" {{ old('type')=='training' ? 'selected' : '' }}>Register As Training Provider</option>
+                        <option value="training" {{ old('type')=='training' ? 'selected' : '' }}>Register As Product Provider</option>
                         <option value="course"   {{ old('type')=='course'   ? 'selected' : '' }}>Register As Course Provider</option>
                     </select>
                     <span style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:#8aaac8;font-size:0.75rem">▼</span>

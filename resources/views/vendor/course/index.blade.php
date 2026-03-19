@@ -1,6 +1,6 @@
 @extends('vendor.layout')
 
-@section('page_title', 'My Courses')
+@section('page_title', 'My trainings')
 
 @section('content')
 
@@ -11,15 +11,15 @@
         <div style="display:flex;align-items:center;gap:12px">
             <div style="width:44px;height:44px;border-radius:10px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1.25rem">📚</div>
             <div>
-                <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.05em;color:#0d1f3c">My Courses</div>
-                <div style="font-size:0.8rem;color:#8aaac8;font-weight:500">{{ count($courses) }} course(s) listed</div>
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:0.05em;color:#0d1f3c">My training</div>
+                <div style="font-size:0.8rem;color:#8aaac8;font-weight:500">{{ count($courses) }} training(s) listed</div>
             </div>
         </div>
         <a href="/vendor/course/create"
            style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:10px;background:#1a6fd4;color:#fff;font-size:0.875rem;font-weight:600;text-decoration:none;transition:background 0.18s"
            onmouseover="this.style.background='#1558b0'"
            onmouseout="this.style.background='#1a6fd4'"
-        >+ Add Course</a>
+        >+ Add training</a>
     </div>
 
     @if(count($courses) === 0)
@@ -28,10 +28,10 @@
         <div style="text-align:center;padding:4rem 2rem;background:#fff;border:1px solid #d0e2f7;border-radius:16px">
             <div style="font-size:3rem;margin-bottom:1rem">📚</div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:#0d1f3c;margin-bottom:0.5rem">No courses yet</div>
-            <p style="color:#8aaac8;font-size:0.9rem;margin-bottom:1.5rem">Create your first course to start selling.</p>
+            <p style="color:#8aaac8;font-size:0.9rem;margin-bottom:1.5rem">Create your first training to start selling.</p>
             <a href="/vendor/course/create"
                style="display:inline-flex;align-items:center;gap:6px;padding:10px 24px;border-radius:10px;background:#1a6fd4;color:#fff;font-size:0.9rem;font-weight:600;text-decoration:none"
-            >+ Add Your First Course</a>
+            >+ Add Your First training</a>
         </div>
 
     @else
@@ -92,7 +92,7 @@
 
         {{-- Summary strip --}}
         <div style="margin-top:1rem;display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;background:#f0f6ff;border:1px solid #d0e2f7;border-radius:10px">
-            <span style="font-size:0.8rem;color:#4a6890;font-weight:500">Showing {{ count($courses) }} course(s)</span>
+            <span style="font-size:0.8rem;color:#4a6890;font-weight:500">Showing {{ count($courses) }} training(s)</span>
             <a href="/vendor/course/create"
                style="font-size:0.8rem;font-weight:600;color:#1a6fd4;text-decoration:none"
                onmouseover="this.style.textDecoration='underline'"

@@ -12,6 +12,12 @@ use App\Http\Controllers\AdminController;
 
 
 Route::get('/',[HomeController::class,'index']);
+// PRODUCT DETAIL
+Route::get('/product/{id}', [HomeController::class, 'productDetail']);
+
+// COURSE DETAIL
+Route::get('/course/{id}', [HomeController::class, 'courseDetail']);
+Route::get('/orders/{id}', [OrderController::class, 'orderDetail']);
 
 // USER AUTH
 Route::get('/login',function(){
@@ -47,14 +53,17 @@ Route::get('/vendor/training',[ProductController::class,'index']);
 Route::get('/vendor/training/create',[ProductController::class,'create']);
 Route::post('/vendor/training/store',[ProductController::class,'store']);
 Route::get('/vendor/training/edit/{id}',[ProductController::class,'edit']);
-Route::post('/vendor/training/update/{id}',[ProductController::class,'update']);
-Route::get('/vendor/training/delete/{id}',[ProductController::class,'delete']);
+Route::put('/vendor/training/update/{id}', [ProductController::class,'update']);
+Route::delete('/vendor/training/delete/{id}', [ProductController::class,'delete']);
+Route::get('/vendor/training/order', [VendorController::class, 'vendorOrders']);
 Route::get('/vendor/course',[CourseController::class,'index']);
 Route::get('/vendor/course/create',[CourseController::class,'create']);
 Route::post('/vendor/course/store',[CourseController::class,'store']);
 Route::get('/vendor/course/edit/{id}',[CourseController::class,'edit']);
-Route::post('/vendor/course/update/{id}',[CourseController::class,'update']);
-Route::get('/vendor/course/delete/{id}',[CourseController::class,'delete']);
+Route::put('/vendor/course/update/{id}',[CourseController::class,'update']);
+Route::delete('/vendor/course/delete/{id}',[CourseController::class,'delete']);
+Route::get('/vendor/course/order', [VendorController::class, 'courseOrders']);
+Route::get('/cart/remove/{id}', [CartController::class, 'remove']);
 
 Route::get('/add-training',[ProductController::class,'create']);
 Route::post('/add-training',[ProductController::class,'store']);
@@ -68,3 +77,16 @@ Route::get('/place-order',[OrderController::class,'placeOrder']);
 Route::get('/my-orders',[OrderController::class,'myOrders']);
 
 Route::get('/admin',[AdminController::class,'dashboard']);
+
+
+// ADMIN
+Route::get('/hash', function () {
+    return bcrypt('admin123');
+});
+Route::get('/admin/login', [AdminController::class,'loginForm']);
+Route::post('/admin/login', [AdminController::class,'login']);
+Route::get('/admin/dashboard', [AdminController::class,'dashboard']);
+Route::get('/admin/users', [AdminController::class,'users']);
+Route::get('/admin/vendors', [AdminController::class,'vendors']);
+Route::get('/admin/orders', [AdminController::class,'orders']);
+Route::get('/admin/logout', [AdminController::class,'logout']);

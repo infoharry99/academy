@@ -10,10 +10,17 @@ class Product extends Model
     use HasFactory;
 
     // ✅ यही missing था 🔥
-    protected $fillable = [
-        'title',
-        'price',
-        'description',
-        'vendor_id'
-    ];
+   protected $fillable = [
+    'title',
+    'slug',
+    'description',
+    'price',
+    'sale_price',
+    'stock',
+    'sku',
+    'image',
+    'vendor_id',
+    'is_active',
+    'is_featured'
+];
 }

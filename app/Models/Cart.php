@@ -19,5 +19,14 @@ class Cart extends Model
         'qty'
     ];
 
-    
+    public function training()
+{
+    return $this->belongsTo(\App\Models\Product::class, 'item_id');
 }
+
+public function course()
+{
+    return $this->belongsTo(\App\Models\Course::class, 'item_id');
+}
+}
+
