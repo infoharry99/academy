@@ -11,22 +11,15 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/',[HomeController::class,'index']);
 
 // USER AUTH
 Route::get('/login',function(){
     return view('auth.login');
+});
+
+Route::get('/welcome',function(){
+    return view('welcome');
 });
 
 Route::get('/register',function(){
