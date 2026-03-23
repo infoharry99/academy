@@ -25,7 +25,7 @@
             <tr>
                 <td>#{{ $o->id }}</td>
                 <td style="color:var(--muted)">#{{ $o->user_id }}</td>
-                <td style="font-weight:600;color:var(--text)">₹{{ number_format($o->total) }}</td>
+                <td style="font-weight:600;color:var(--text)">£{{ number_format($o->total) }}</td>
                 <td>
                     @if(isset($o->status))
                         @if($o->status == 'completed')

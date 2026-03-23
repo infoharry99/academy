@@ -62,7 +62,7 @@
                 </div>
 
                 {{-- Price --}}
-                <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.03em;color:#2563eb">₹{{ number_format($c->price, 2) }}</div>
+                <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.03em;color:#2563eb">£{{ number_format($c->price, 2) }}</div>
 
                 {{-- Actions --}}
                 <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">

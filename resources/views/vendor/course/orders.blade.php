@@ -56,7 +56,7 @@
 
                     <!-- PRICE -->
                     <div style="font-weight:600;color:#2563eb;font-size:1rem">
-                        ₹{{ $o->price * $o->qty }}
+                        £{{ $o->price * $o->qty }}
                     </div>
 
                     <!-- ORDER ID -->

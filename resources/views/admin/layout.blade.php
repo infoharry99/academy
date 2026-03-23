@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Panel</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -498,6 +500,9 @@ body {
     <div class="nav-label">Manage</div>
     <a href="/admin/users" class="{{ request()->is('admin/users') ? 'active' : '' }}">
       <span class="icon">👤</span> Users
+    </a>
+     <a href="/admin/banner" class="{{ request()->is('admin/banner') ? 'active' : '' }}">
+      <span class="icon">👤</span> Banners
     </a>
     <a href="/admin/vendors" class="{{ request()->is('admin/vendors') ? 'active' : '' }}">
       <span class="icon">🏪</span> Vendors

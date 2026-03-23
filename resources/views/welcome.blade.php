@@ -308,7 +308,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">Master stance, footwork, jab-cross combos, and defensive slips with a certified coach.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-green">₹1,499</div>
+        <div class="price price-green">£1,499</div>
         <a href="/cart/add/training/1" class="add-btn add-green">+ Add</a>
       </div>
     </div>
@@ -323,7 +323,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">6-week field training program to improve VO₂ max, sprint speed, and overall stamina.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-green">₹2,199</div>
+        <div class="price price-green">£2,199</div>
         <a href="/cart/add/training/2" class="add-btn add-green">+ Add</a>
       </div>
     </div>
@@ -338,7 +338,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">Daily mobility routines and deep stretching protocols to prevent injury and boost performance.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-green">₹999</div>
+        <div class="price price-green">£999</div>
         <a href="/cart/add/training/3" class="add-btn add-green">+ Add</a>
       </div>
     </div>
@@ -369,7 +369,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">Build mental toughness, learn visualization techniques, and develop a champion's mindset.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-blue">₹3,499</div>
+        <div class="price price-blue">£3,499</div>
         <a href="/cart/add/course/1" class="add-btn add-blue">+ Add</a>
       </div>
     </div>
@@ -384,7 +384,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">Macro planning, meal timing, and supplement guidance for peak athletic performance.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-blue">₹1,799</div>
+        <div class="price price-blue">£1,799</div>
         <a href="/cart/add/course/2" class="add-btn add-blue">+ Add</a>
       </div>
     </div>
@@ -399,7 +399,7 @@ footer strong{color:var(--text-secondary)}
         <div class="card-desc">Understand data-driven performance metrics, wearable tech insights, and match analysis tools.</div>
       </div>
       <div class="card-footer">
-        <div class="price price-blue">₹2,999</div>
+        <div class="price price-blue">£2,999</div>
         <a href="/cart/add/course/3" class="add-btn add-blue">+ Add</a>
       </div>
     </div>

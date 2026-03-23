@@ -9,9 +9,13 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BannerController;
 
 
 Route::get('/',[HomeController::class,'index']);
+
+Route::get('/all-products', [HomeController::class, 'allProducts']);
 // PRODUCT DETAIL
 Route::get('/product/{id}', [HomeController::class, 'productDetail']);
 
@@ -76,7 +80,14 @@ Route::get('/cart/add/{type}/{id}',[CartController::class,'add']);
 Route::get('/place-order',[OrderController::class,'placeOrder']);
 Route::get('/my-orders',[OrderController::class,'myOrders']);
 
+Route::get('/vendor/category', [CategoryController::class, 'index']);
+Route::get('/vendor/category/create', [CategoryController::class, 'create']);
+Route::post('/vendor/category/store', [CategoryController::class, 'store']);
+Route::get('/vendor/category/edit/{id}', [CategoryController::class, 'edit']);
+Route::post('/vendor/category/update/{id}', [CategoryController::class, 'update']);
+Route::get('/vendor/category/delete/{id}', [CategoryController::class, 'delete']);
 Route::get('/admin',[AdminController::class,'dashboard']);
+
 
 
 // ADMIN
@@ -90,3 +101,9 @@ Route::get('/admin/users', [AdminController::class,'users']);
 Route::get('/admin/vendors', [AdminController::class,'vendors']);
 Route::get('/admin/orders', [AdminController::class,'orders']);
 Route::get('/admin/logout', [AdminController::class,'logout']);
+Route::get('/admin/banner', [BannerController::class,'index']);
+Route::get('/admin/banner/create', [BannerController::class,'create']);
+Route::post('/admin/banner/store', [BannerController::class,'store']);
+Route::get('/admin/banner/edit/{id}', [BannerController::class,'edit']);
+Route::post('/admin/banner/update/{id}', [BannerController::class,'update']);
+Route::get('/admin/banner/delete/{id}', [BannerController::class,'delete']);

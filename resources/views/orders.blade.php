@@ -66,7 +66,7 @@
                 <div style="display:flex;gap:2rem;flex-wrap:wrap">
                     <div>
                         <div style="font-size:0.75rem;color:#8aaac8;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px">Total Amount</div>
-                        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.03em;color:#16a34a">₹{{ number_format($o->total, 2) }}</div>
+                        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.03em;color:#16a34a">£{{ number_format($o->total, 2) }}</div>
                     </div>
                     <div>
                         <div style="font-size:0.75rem;color:#8aaac8;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:3px">Placed On</div>

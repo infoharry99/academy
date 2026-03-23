@@ -175,6 +175,10 @@ body{
             <div class="nav-icon" style="background:var(--green-light)">🏋️</div>
             Products
         </a>
+         <a href="/vendor/category" class="nav-link">
+            <div class="nav-icon" style="background:#fef3c7">📦</div>
+            Categorys
+        </a>
          <a href="/vendor/training/order" class="nav-link">
             <div class="nav-icon" style="background:#fef3c7">📦</div>
             Orders

@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sports Academy</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
     <style>
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
         :root{
-        --bg:#f0f6ff;
+        --bg:#fff;
         --surface:#ffffff;
         --surface-2:#e8f1fd;
         --border:#d0e2f7;
