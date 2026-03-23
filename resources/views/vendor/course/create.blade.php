@@ -19,7 +19,7 @@
     <div style="background:#fff;border:1px solid #d0e2f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(26,111,212,0.07)">
 
         <div style="padding:1.75rem">
-            <form method="POST" action="/vendor/course/store">
+            <form method="POST" action="/vendor/course/store" enctype="multipart/form-data">
                 @csrf
 
                 {{-- Title --}}
@@ -39,6 +39,14 @@
                     @enderror
                 </div>
 
+                <!-- CATEGORY -->
+            <select name="category_id" class="w-full mb-3 px-4 py-2 border rounded-lg">
+                <option value="">Select Category</option>
+                @foreach($categories as $cat)
+                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                @endforeach
+            </select>
+           <input type="file" name="image" class="mb-3">
                 {{-- Price --}}
                 <div style="margin-bottom:1.25rem">
                     <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Price (£)</label>

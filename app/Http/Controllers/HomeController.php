@@ -11,31 +11,51 @@ use App\Models\Banner;
 
 class HomeController extends Controller
 {
-    public function index(Request $req)
-    {
-        $categories = Category::all();
+public function index(Request $req)
+{
+    // 🔹 CATEGORY TYPE FILTER
+    $productCategories = Category::where('type','product')->get();
+    $courseCategories = Category::where('type','course')->get();
 
-        $selectedCategory = $req->category; // 👈 ADD
+    $selectedProductCat = $req->product_category;
+    $selectedCourseCat = $req->course_category;
 
-        $products = Product::with('category')
-            ->when($selectedCategory, function ($q) use ($selectedCategory) {
-                $q->where('category_id', $selectedCategory);
-            })
-            ->latest()
-            ->take(6)
-            ->get();
+    // 🔥 PRODUCTS FILTER
+    $products = Product::with('category')
+        ->when($selectedProductCat, function ($q) use ($selectedProductCat) {
+            $q->where('category_id', $selectedProductCat);
+        })
+        ->latest()
+        ->take(6)
+        ->get();
 
-        $courses = Course::all();
-        $banners = Banner::where('is_active',1)->get();
+    // 🔥 COURSES FILTER
+    $courses = Course::with('category')
+        ->when($selectedCourseCat, function ($q) use ($selectedCourseCat) {
+            $q->where('category_id', $selectedCourseCat);
+        })
+        ->latest()
+        ->take(6)
+        ->get();
 
-        return view('home', compact('products', 'courses', 'categories', 'selectedCategory', 'banners'));
-    }
+    $banners = Banner::where('is_active',1)->get();
+
+    return view('home', compact(
+        'products',
+        'courses',
+        'productCategories',
+        'courseCategories',
+        'selectedProductCat',
+        'selectedCourseCat',
+        'banners'
+    ));
+}
 
 
     // ✅ ALL PRODUCTS PAGE
     public function allProducts(Request $req)
     {
-        $categories = Category::all();
+        $categories = Category::where('type','product')->get();
 
         $products = Product::with('category')
             ->when($req->category, function ($q) use ($req) {
@@ -46,6 +66,20 @@ class HomeController extends Controller
 
         return view('products', compact('products', 'categories'));
     }
+
+    public function allCourses(Request $req)
+{
+    $categories = Category::where('type','course')->get();
+
+    $courses = Course::with('category')
+        ->when($req->category, function ($q) use ($req) {
+            $q->where('category_id', $req->category);
+        })
+        ->latest()
+        ->paginate(9);
+
+    return view('courses', compact('courses','categories'));
+}
 
    public function productDetail($id)
 {

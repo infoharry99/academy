@@ -109,4 +109,14 @@ public function courseOrders()
 
     return view('vendor.course.orders', compact('orders'));
 }
+public function profile()
+{
+    if (!Session::has('vendor_id')) {
+        return redirect('/vendor/login');
+    }
+
+    $vendor = Vendor::find(Session::get('vendor_id'));
+
+    return view('vendor.profile', compact('vendor'));
+}
 }

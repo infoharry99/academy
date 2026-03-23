@@ -18,7 +18,8 @@
     {{-- Form card --}}
     <div style="background:#fff;border:1px solid #d0e2f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(26,111,212,0.07)">
         <div style="padding:1.75rem">
-            <form method="POST" action="/vendor/course/update/{{ $course->id }}">
+            <form method="POST" action="/vendor/course/update/{{ $course->id }}"
+            enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
@@ -38,6 +39,36 @@
                         <span style="font-size:0.78rem;color:#dc2626;margin-top:4px;display:block">{{ $message }}</span>
                     @enderror
                 </div>
+<!-- CATEGORY -->
+<div>
+    <label class="block text-sm font-semibold text-gray-600 mb-1">Category</label>
+    <select name="category_id"
+        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500">
+
+        <option value="">Select Category</option>
+
+        @foreach($categories as $cat)
+            <option value="{{ $cat->id }}"
+                {{ $course->category_id == $cat->id ? 'selected' : '' }}>
+                {{ $cat->name }}
+            </option>
+        @endforeach
+
+    </select>
+</div>
+
+<!-- IMAGE -->
+<div>
+    <label class="block text-sm font-semibold text-gray-600 mb-1">Image</label>
+
+    @if($course->image)
+        <img src="{{ asset('courses/'.$course->image) }}"
+             class="w-24 h-24 object-cover rounded-lg mb-2">
+    @endif
+
+    <input type="file" name="image"
+        class="w-full border p-2 rounded-lg">
+</div>
 
                 {{-- Price --}}
                 <div style="margin-bottom:1.25rem">

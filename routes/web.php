@@ -16,6 +16,7 @@ use App\Http\Controllers\BannerController;
 Route::get('/',[HomeController::class,'index']);
 
 Route::get('/all-products', [HomeController::class, 'allProducts']);
+Route::get('/all-courses', [HomeController::class, 'allCourses']);
 // PRODUCT DETAIL
 Route::get('/product/{id}', [HomeController::class, 'productDetail']);
 
@@ -45,7 +46,7 @@ Route::get('/profile',[AuthController::class,'profile']);
 
 // Route::post('/register',[AuthController::class,'register']);
 // Route::post('/login',[AuthController::class,'login']);
-
+Route::get('/vendor/profile', [VendorController::class, 'profile']);
 Route::get('/vendor/register',[VendorController::class,'registerForm']);
 Route::post('/vendor/register',[VendorController::class,'register']);
 Route::get('/vendor/login',[VendorController::class,'loginForm']);

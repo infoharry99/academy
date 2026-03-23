@@ -54,10 +54,14 @@
             >
                 {{-- Title --}}
                 <div style="display:flex;align-items:center;gap:10px">
-                    <div style="width:36px;height:36px;border-radius:8px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">📚</div>
+                    <div style="width:36px;height:36px;border-radius:8px;background:#dbeafe;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">
+                        @if($c->image)
+                        <img src="{{ asset('courses/'.$c->image) }}" width="100">
+                        @endif
+                    </div>
                     <div>
                         <div style="font-size:0.925rem;font-weight:600;color:#0d1f3c">{{ $c->title }}</div>
-                        <div style="font-size:0.75rem;color:#8aaac8;margin-top:1px">ID #{{ $c->id }}</div>
+                        <div style="font-size:0.75rem;color:#8aaac8;margin-top:1px">{{ $c->category->name ?? 'No Category' }}</div>
                     </div>
                 </div>
 

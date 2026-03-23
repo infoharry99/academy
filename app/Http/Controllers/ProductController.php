@@ -18,7 +18,7 @@ class ProductController extends Controller
 }
 public function create()
 {
-    $categories = Category::all(); // 👈 ADD
+    $categories = Category::where('type','product')->get();
     return view('vendor.training.create', compact('categories'));
 }
 public function store(Request $req)
@@ -57,7 +57,9 @@ public function store(Request $req)
 public function edit($id)
 {
     $product = Product::findOrFail($id);
-    $categories = Category::all(); // 👈 ADD
+
+    $categories = Category::where('type','product')->get();
+
 
     return view('vendor.training.edit', compact('product','categories'));
 }

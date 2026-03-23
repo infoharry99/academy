@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vendor Panel — Sports Academy</title>
+<script src="https://cdn.tailwindcss.com"></script>
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -175,10 +177,12 @@ body{
             <div class="nav-icon" style="background:var(--green-light)">🏋️</div>
             Products
         </a>
-         <a href="/vendor/category" class="nav-link">
+
+        <a href="/vendor/category?type=product" class="nav-link">
             <div class="nav-icon" style="background:#fef3c7">📦</div>
-            Categorys
-        </a>
+
+        Category
+    </a>
          <a href="/vendor/training/order" class="nav-link">
             <div class="nav-icon" style="background:#fef3c7">📦</div>
             Orders
@@ -190,13 +194,22 @@ body{
             <div class="nav-icon" style="background:#dbeafe">📚</div>
             Training
         </a>
+        <a href="/vendor/category?type=course" class="nav-link">
+            <div class="nav-icon" style="background:#fef3c7">📦</div>
+
+          
+        Category
+    </a>
          <a href="/vendor/course/order" class="nav-link">
             <div class="nav-icon" style="background:#fef3c7">📦</div>
             Orders
         </a>
         @endif 
 
-
+<a href="/vendor/profile" class="nav-link">
+    <div class="nav-icon" style="background:#e0f2fe">👤</div>
+    Profile
+</a>
        
 
         <a href="/vendor/logout" class="nav-link danger">
