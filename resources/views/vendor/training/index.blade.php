@@ -72,9 +72,9 @@
 
                 {{-- Price --}}
                 <div>
-                    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:0.03em;color:#16a34a">₹{{ number_format($p->price, 2) }}</div>
+                    <div style="font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:0.03em;color:#16a34a">£{{ number_format($p->price, 2) }}</div>
                     @if($p->sale_price)
-                        <div style="font-size:0.75rem;color:#ef4444;font-family:'DM Sans',sans-serif">Sale: ₹{{ number_format($p->sale_price, 2) }}</div>
+                        <div style="font-size:0.75rem;color:#ef4444;font-family:'DM Sans',sans-serif">Sale: £{{ number_format($p->sale_price, 2) }}</div>
                     @endif
                 </div>
 

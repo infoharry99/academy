@@ -51,7 +51,7 @@
                 <div style="text-align:right">
 
                     <div style="font-weight:600;color:#16a34a">
-                        ₹{{ $o->price * $o->qty }}
+                        £{{ $o->price * $o->qty }}
                     </div>
 
                     <div style="font-size:0.8rem;color:#888">

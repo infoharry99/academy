@@ -13,7 +13,7 @@
 
     <div class="bg-white p-4 shadow">
         <h3>Total Sales</h3>
-        <p class="text-xl font-bold">₹5000</p>
+        <p class="text-xl font-bold">£5000</p>
     </div>
 
 </div>

@@ -29,12 +29,12 @@
 
             <!-- PRICE -->
             <div style="font-size:1.8rem;color:green;font-weight:600">
-                ₹{{ $product->price }}
+                £{{ $product->price }}
             </div>
 
             @if($product->sale_price)
                 <div style="color:red">
-                    Sale Price: ₹{{ $product->sale_price }}
+                    Sale Price: £{{ $product->sale_price }}
                 </div>
             @endif
 

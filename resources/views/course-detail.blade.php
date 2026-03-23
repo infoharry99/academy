@@ -13,7 +13,7 @@
     </p>
 
     <div style="font-size:1.8rem;color:#3b82f6;font-weight:600">
-        ₹{{ $course->price }}
+        £{{ $course->price }}
     </div>
 
     <a href="{{ url('/cart/add/course/'.$course->id) }}"

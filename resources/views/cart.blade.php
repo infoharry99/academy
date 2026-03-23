@@ -66,7 +66,7 @@
                         </div>
 
                         <div style="margin-top:6px;font-size:0.9rem;color:#16a34a;font-weight:600">
-                            ₹{{ $price }} × {{ $qty }}
+                            £{{ $price }} × {{ $qty }}
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
 
                     <!-- SUBTOTAL -->
                     <div style="font-size:1rem;font-weight:700;color:#0d1f3c">
-                        ₹{{ $subtotal }}
+                        £{{ $subtotal }}
                     </div>
 
                     <!-- REMOVE -->
@@ -103,7 +103,7 @@
 
             <div style="display:flex;justify-content:space-between;font-size:1.2rem">
                 <span>Total Amount:</span>
-                <strong style="color:#16a34a">₹{{ $total }}</strong>
+                <strong style="color:#16a34a">£{{ $total }}</strong>
             </div>
 
         </div>

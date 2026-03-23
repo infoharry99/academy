@@ -41,9 +41,9 @@
 
                 {{-- Price --}}
                 <div style="margin-bottom:1.25rem">
-                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Price (₹)</label>
+                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Price (£)</label>
                     <div style="position:relative">
-                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">₹</span>
+                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">£</span>
                         <input
                             name="price"
                             type="number"

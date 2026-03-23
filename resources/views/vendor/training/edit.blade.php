@@ -38,9 +38,9 @@
 
                 {{-- Price --}}
                 <div style="margin-bottom:1.25rem">
-                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Price (₹)</label>
+                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Price (£)</label>
                     <div style="position:relative">
-                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">₹</span>
+                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">£</span>
                         <input
                             name="price" type="number" min="0" step="0.01"
                             placeholder="0.00"
@@ -55,9 +55,9 @@
 
                 {{-- Sale Price --}}
                 <div style="margin-bottom:1.25rem">
-                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Sale Price (₹) <span style="font-weight:400;text-transform:none;color:#8aaac8">— optional</span></label>
+                    <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Sale Price (£) <span style="font-weight:400;text-transform:none;color:#8aaac8">— optional</span></label>
                     <div style="position:relative">
-                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">₹</span>
+                        <span style="position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1rem;color:#8aaac8;pointer-events:none">£</span>
                         <input
                             name="sale_price" type="number" min="0" step="0.01"
                             placeholder="0.00"
