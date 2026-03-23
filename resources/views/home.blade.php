@@ -16,8 +16,7 @@
                     <p class="text-sm mt-2">{{ $b->description }}</p>
                 </div>
 
-<<<<<<< HEAD
-=======
+
                 <span class="card-media-tag tag-training">Products</span>
             </div>
 
