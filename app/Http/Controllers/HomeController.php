@@ -11,53 +11,68 @@ use App\Models\Banner;
 
 class HomeController extends Controller
 {
-public function index(Request $req)
-{
-    // 🔹 CATEGORY TYPE FILTER
-    $productCategories = Category::where('type','product')->get();
-    $courseCategories = Category::where('type','course')->get();
+    public function index(Request $req,$id = null)
+    {
+        if ($id) {
+            session(['vendor_id' => $id]);
+        }
 
-    $selectedProductCat = $req->product_category;
-    $selectedCourseCat = $req->course_category;
+        $vendorId = session('vendor_id');
 
-    // 🔥 PRODUCTS FILTER
-    $products = Product::with('category')
-        ->when($selectedProductCat, function ($q) use ($selectedProductCat) {
-            $q->where('category_id', $selectedProductCat);
-        })
-        ->latest()
-        ->take(6)
-        ->get();
+        $productCategories = Category::where('type','product')->get();
+        $courseCategories = Category::where('type','course')->get();
 
-    // 🔥 COURSES FILTER
-    $courses = Course::with('category')
-        ->when($selectedCourseCat, function ($q) use ($selectedCourseCat) {
-            $q->where('category_id', $selectedCourseCat);
-        })
-        ->latest()
-        ->take(6)
-        ->get();
+        $selectedProductCat = $req->product_category;
+        $selectedCourseCat = $req->course_category;
 
-    $banners = Banner::where('is_active',1)->get();
+        // 🔥 PRODUCTS FILTER
+        $products = Product::with('category')
+                    ->when($vendorId, function ($q) use ($vendorId) {
+                        $q->where('vendor_id', $vendorId);
+                    })
+                    ->when($selectedProductCat, function ($q) use ($selectedProductCat) {
+                        $q->where('category_id', $selectedProductCat);
+                    })
+                    ->latest()
+                    ->take(6)
+                    ->get();
 
-    return view('home', compact(
-        'products',
-        'courses',
-        'productCategories',
-        'courseCategories',
-        'selectedProductCat',
-        'selectedCourseCat',
-        'banners'
-    ));
-}
+        // 🔥 COURSES FILTER
+        $courses = Course::with('category')
+                    ->when($vendorId, function ($q) use ($vendorId) {
+                        $q->where('vendor_id', $vendorId);
+                    })
+                    ->when($selectedCourseCat, function ($q) use ($selectedCourseCat) {
+                        $q->where('category_id', $selectedCourseCat);
+                    })
+                    ->latest()
+                    ->take(6)
+                    ->get();
 
+        $banners = Banner::where('is_active',1)->get();
+
+        return view('home', compact(
+            'products',
+            'courses',
+            'productCategories',
+            'courseCategories',
+            'selectedProductCat',
+            'selectedCourseCat',
+            'banners'
+        ));
+    }
 
     // ✅ ALL PRODUCTS PAGE
     public function allProducts(Request $req)
     {
+        $vendorId = session('vendor_id');
+
         $categories = Category::where('type','product')->get();
 
         $products = Product::with('category')
+            ->when($vendorId, function ($q) use ($vendorId) {
+                $q->where('vendor_id', $vendorId);
+            })
             ->when($req->category, function ($q) use ($req) {
                 $q->where('category_id', $req->category);
             })
@@ -67,37 +82,55 @@ public function index(Request $req)
         return view('products', compact('products', 'categories'));
     }
 
-    public function allCourses(Request $req)
-{
-    $categories = Category::where('type','course')->get();
+   public function allCourses(Request $req)
+    {
+        $vendorId = session('vendor_id');
 
-    $courses = Course::with('category')
-        ->when($req->category, function ($q) use ($req) {
-            $q->where('category_id', $req->category);
-        })
-        ->latest()
-        ->paginate(9);
+        $categories = Category::where('type','course')->get();
 
-    return view('courses', compact('courses','categories'));
-}
+        $courses = Course::with('category')
+            ->when($vendorId, function ($q) use ($vendorId) {
+                $q->where('vendor_id', $vendorId);
+            })
+            ->when($req->category, function ($q) use ($req) {
+                $q->where('category_id', $req->category);
+            })
+            ->latest()
+            ->paginate(9);
 
-   public function productDetail($id)
-{
-    $product = Product::with('category')->findOrFail($id);
+        return view('courses', compact('courses','categories'));
+    }
 
-    // 🔥 RELATED PRODUCTS
-    $relatedProducts = Product::where('category_id', $product->category_id)
-        ->where('id', '!=', $product->id)
-        ->latest()
-        ->take(4)
-        ->get();
+    public function productDetail($id)
+    {
+        $vendorId = session('vendor_id');
 
-    return view('product-detail', compact('product', 'relatedProducts'));
-}
+        $product = Product::with('category')
+            ->when($vendorId, function ($q) use ($vendorId) {
+                $q->where('vendor_id', $vendorId);
+            })
+            ->findOrFail($id);
 
+        $relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('id', '!=', $product->id)
+            ->when($vendorId, function ($q) use ($vendorId) {
+                $q->where('vendor_id', $vendorId);
+            })
+            ->latest()
+            ->take(4)
+            ->get();
+
+        return view('product-detail', compact('product', 'relatedProducts'));
+    }
+    
     public function courseDetail($id)
     {
-        $course = Course::findOrFail($id);
+        $vendorId = session('vendor_id');
+
+        $course = Course::when($vendorId, function ($q) use ($vendorId) {
+            $q->where('vendor_id', $vendorId);
+        })->findOrFail($id);
+
         return view('course-detail', compact('course'));
     }
 }

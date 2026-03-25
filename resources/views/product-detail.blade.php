@@ -203,13 +203,9 @@
 </style>
 
 <div class="max-w-6xl mx-auto px-4 py-8">
-
- 
-
     {{-- MAIN PRODUCT AREA --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-        {{-- ===== LEFT: IMAGE GALLERY ===== --}}
         <div>
             <div class="main-image-wrap" id="mainImageWrap">
                 @if($product->image)
@@ -234,7 +230,6 @@
             
         </div>
 
-        {{-- ===== RIGHT: PRODUCT DETAILS ===== --}}
         <div>
 
             {{-- Category --}}

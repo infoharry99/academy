@@ -20,12 +20,23 @@ class VendorController extends Controller
     // ✅ Register Save
     public function register(Request $req)
     {
+
+        $user = User::create([
+            'name'=>$req->name,
+            'email'=>$req->email,
+            'password'=>bcrypt($req->password)
+        ]);
+
+
         Vendor::create([
             'name' => $req->name,
             'email' => $req->email,
             'password' => bcrypt($req->password),
-            'type' => $req->type
+            'type' => $req->type,
+            'user_id' => $user->id
         ]);
+
+        
 
         return redirect('/vendor/login');
     }

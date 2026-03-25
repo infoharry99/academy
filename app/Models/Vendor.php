@@ -11,6 +11,7 @@ class Vendor extends Model
     'name',
     'email',
     'password',
-    'type'
+    'type',
+    'user_id'
 ];
 }

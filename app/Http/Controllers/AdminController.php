@@ -21,19 +21,19 @@ class AdminController extends Controller
     }
 
     // LOGIN
-public function login(Request $req)
-{
-    $admin = Admin::where('email', trim($req->email))->first();
+    public function login(Request $req)
+    {
+        $admin = Admin::where('email', trim($req->email))->first();
 
-    if ($admin && trim($req->password) === trim($admin->password)) {
+        if ($admin && trim($req->password) === trim($admin->password)) {
 
-        Session::put('admin_id', $admin->id);
+            Session::put('admin_id', $admin->id);
 
-        return redirect('/admin/dashboard');
+            return redirect('/admin/dashboard');
+        }
+
+        return back()->with('error','Invalid email or password');
     }
-
-    return back()->with('error','Invalid email or password');
-}
 
     // DASHBOARD
     public function dashboard()
@@ -60,24 +60,24 @@ public function login(Request $req)
         return redirect('/admin/login');
     }
 
-    // USERS LIST
-public function users()
-{
-    $users = User::latest()->get();
-    return view('admin.users', compact('users'));
-}
+        // USERS LIST
+    public function users()
+    {
+        $users = User::latest()->get();
+        return view('admin.users', compact('users'));
+    }
 
-// VENDORS LIST
-public function vendors()
-{
-    $vendors = Vendor::latest()->get();
-    return view('admin.vendors', compact('vendors'));
-}
+    // VENDORS LIST
+    public function vendors()
+    {
+        $vendors = Vendor::latest()->get();
+        return view('admin.vendors', compact('vendors'));
+    }
 
-// ORDERS LIST
-public function orders()
-{
-    $orders = Order::latest()->get();
-    return view('admin.orders', compact('orders'));
-}
+    // ORDERS LIST
+    public function orders()
+    {
+        $orders = Order::latest()->get();
+        return view('admin.orders', compact('orders'));
+    }
 }
