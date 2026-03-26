@@ -8,6 +8,11 @@ use App\Models\OrderItem;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Course;
+use App\Models\Performance;
+use App\Models\StudentFitness;
+use App\Models\AttendanceRecord;
+use App\Models\StudentAttendance;
+
 
 class OrderController extends Controller
 {
@@ -67,7 +72,7 @@ public function placeOrder()
 }
 public function myOrders()
 {
-    $orders = Order::where('user_id',auth()->id())->get();
+    $orders = Order::with('items')->where('user_id',auth()->id())->get();
     return view('orders',compact('orders'));
 }
 public function orderDetail($id)
@@ -77,5 +82,84 @@ public function orderDetail($id)
                   ->findOrFail($id);
 
     return view('order-detail', compact('order'));
+}
+public function startCourse($orderId)
+{
+    $order = Order::where('user_id', auth()->id())
+        ->with('items')
+        ->findOrFail($orderId);
+
+    // course item nikaalo
+    $courseItem = $order->items->where('type', 'course')->first();
+
+    if (!$courseItem) {
+        return redirect('/my-orders')->with('error', 'No course found');
+    }
+
+    $courseId = $courseItem->item_id;
+
+    $course = Course::find($courseId);
+
+    if (!$course) {
+        return redirect('/my-orders')->with('error', 'Course not found');
+    }
+
+    // ✅ PERFORMANCE
+    $performance = Performance::where('user_id', auth()->id())
+        ->where('course_id', $courseId)
+        ->first();
+
+    // ✅ FITNESS
+    $fitness = StudentFitness::where('user_id', auth()->id())
+        ->where('course_id', $courseId)
+        ->first();
+
+    // ✅ ATTENDANCE (W1–W8)
+    $attendance = StudentAttendance::where('user_id', auth()->id())
+        ->where('course_id', $courseId)
+        ->orderBy('week')
+        ->get();
+
+        
+// ============================
+    // ✅ CHART DATA PREPARE
+    // ============================
+
+    $runs = $performance ? [$performance->runs] : [];
+    $strikeRate = $performance ? [$performance->strick_rate] : [];
+
+    $wickets = $performance ? [$performance->wickets] : [];
+    $economy = $performance ? [$performance->ecconomy] : [];
+
+    $fitnessData = $fitness ? [
+        $fitness->speed,
+        $fitness->stamina,
+        $fitness->strength,
+        $fitness->agility,
+        $fitness->flexibility,
+        $fitness->endurance
+    ] : [0,0,0,0,0,0];
+
+    $attendanceLabels = [];
+    $attendanceData = [];
+
+    foreach ($attendance as $a) {
+        $attendanceLabels[] = $a->week;
+        $attendanceData[] = $a->attendance; // ⚠️ column name
+    }
+
+    return view('course-start', compact(
+        'course',
+        'performance',
+        'fitness',
+        'attendance',
+        'runs',
+        'strikeRate',
+        'wickets',
+        'economy',
+        'fitnessData',
+        'attendanceLabels',
+        'attendanceData'
+    ));
 }
 }
