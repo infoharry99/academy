@@ -284,7 +284,7 @@
   <aside class="sidebar">
 
     <div class="sidebar-brand">
-      <div class="sidebar-logo">🏪 <span>Adnan Academy</span></div>
+      <div class="sidebar-logo">🏪 <span>Adnan Cricket Academy</span></div>
       <div class="sidebar-sub">Vendor Panel</div>
     </div>
 
