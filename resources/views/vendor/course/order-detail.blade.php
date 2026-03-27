@@ -1,7 +1,5 @@
 @extends('vendor.layout')
-
 @section('page_title', 'Order Detail')
-
 @section('content')
 
 <style>
@@ -546,6 +544,7 @@
                 </div>
             </div>
         </div>
+        {{$orderItem->course}}
 
         <!-- Card Content -->
         <div class="card-content">

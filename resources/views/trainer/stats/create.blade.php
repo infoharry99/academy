@@ -274,11 +274,10 @@
         <form method="POST" action="{{ route('trainer.stats.store') }}" novalidate>
             @csrf
 
-            <!-- Hidden Fields -->
             <input type="hidden" name="category_id" value="{{ $categoryId }}">
             <input type="hidden" name="user_id" value="{{ $user->id ?? 1 }}">
-               <input type="hidden" name="course_id" value="1">
-            <!-- Form Card -->
+            <input type="hidden" name="course_id" value="1">
+
             <div class="form-card">
 
                 <!-- Form Header -->
@@ -309,6 +308,33 @@
                             Performance Stats
                         </h2>
 
+                        <div class="fields-grid">
+
+                            @foreach($fields as $field)
+                                <div class="form-field">
+                                    <label class="field-label">
+                                        {{ $field->name }}
+                                    </label>
+
+                                    <input 
+                                        type="{{ $field->type == 'numeric' ? 'number' : 'text' }}"
+                                        name="fields[{{ $field->id }}]"
+                                        class="form-input"
+                                        placeholder="{{ $field->unit ?? '' }}"
+                                        
+                                        @if($field->min_value !== null) min="{{ $field->min_value }}" @endif
+                                        @if($field->max_value !== null) max="{{ $field->max_value }}" @endif
+                                        @if($field->decimal_places) step="0.{{ str_repeat('0', $field->decimal_places-1) }}1" @endif
+                                    >
+
+                                    <div class="field-hint">
+                                        {{ $field->description ?? '' }}
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
+                        <!-- </div>
                         <div class="fields-grid">
 
 
@@ -387,7 +413,7 @@
                                 <input type="text" name="performance[accadmy]" class="form-input">
                             </div>
 
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- FITNESS TRACKING SECTION -->

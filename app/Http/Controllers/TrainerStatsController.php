@@ -28,7 +28,7 @@ class TrainerStatsController extends Controller
     public function create($categoryId, $userId = null)
     {
         try {
-            // Get category with all active fields
+            
             $category = StatCategory::with([
                 'fields' => function ($query) {
                     $query->where('is_active', true)->ordered();
@@ -69,12 +69,6 @@ class TrainerStatsController extends Controller
         }
     }
 
-    /**
-     * Store the stats in database
-     * 
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
         try {
