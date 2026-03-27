@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\BulkEmailController;
+use App\Http\Controllers\Admin\EmailTemplateController;
+use App\Http\Controllers\Admin\SmtpAccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
@@ -12,7 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\TrainerStatsController;
-
+use Illuminate\Support\Facades\Mail;
 
     Route::get('/',[HomeController::class,'index']);
     Route::get('/platform/{id}', [HomeController::class, 'index']);
@@ -154,3 +157,63 @@ Route::post('/admin/banner/store', [BannerController::class,'store']);
 Route::get('/admin/banner/edit/{id}', [BannerController::class,'edit']);
 Route::post('/admin/banner/update/{id}', [BannerController::class,'update']);
 Route::get('/admin/banner/delete/{id}', [BannerController::class,'delete']);
+
+
+Route::get('/admin/payments', function () {
+    return view('admin.payment'); // make sure file name matches
+})->name('admin.payment');
+
+ Route::prefix('admin')->group(function () {
+    
+            // Route::get('/dashboard',[BulkEmailController::class, 'index'])->name('admin.dashboard');
+            Route::get('/test-mail', function () {
+            Mail::to('infoharry99@gmail.com')
+                    ->send(new \App\Mail\BulkMail());
+                return 'Mail sent';
+            });
+            Route::post(
+                '/bulk-emails/test-mail',
+                [App\Http\Controllers\Admin\BulkEmailController::class, 'sendTestMail']
+            )->name('admin.bulk-emails.test-mail');
+        
+            
+            Route::post(
+                '/bulk-emails/{id}/toggle-block',
+                [BulkEmailController::class, 'toggleBlock']
+            )->name('admin.bulk-emails.toggle-block');
+        
+            Route::get('/email-template', [EmailTemplateController::class, 'edit'])
+                ->name('admin.email-template.edit');
+            
+            Route::post('/email-template', [EmailTemplateController::class, 'update'])
+                ->name('admin.email-template.update');
+            
+            Route::post(
+                '/bulk-emails/reset-all',
+                [BulkEmailController::class, 'resetAll']
+            )->name('admin.bulk-emails.reset-all');
+        
+            Route::post(
+                '/bulk-emails/{id}/reset',
+                [BulkEmailController::class, 'resetStatus']
+            )->name('admin.bulk-emails.reset');
+        
+            // Bulk Email Management
+            Route::get('bulk-emails', [BulkEmailController::class, 'indexs'])
+                ->name('admin.bulk-emails.index');
+            Route::get('bulk-emails', [BulkEmailController::class, 'index'])
+                ->name('admin.bulk-emails.index');
+        
+            Route::post('/bulk-emails', [BulkEmailController::class, 'store'])
+                ->name('admin.bulk-emails.store');
+        
+            // SMTP Management
+            Route::get('n/smtp', [SmtpAccountController::class, 'index'])
+                ->name('admin.smtp.index');
+        
+            Route::post('/smtp', [SmtpAccountController::class, 'store'])
+                ->name('admin.smtp.store');
+        
+            
+    
+});

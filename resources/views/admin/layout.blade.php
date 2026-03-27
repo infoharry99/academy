@@ -7,6 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -509,6 +510,14 @@ body {
     </a>
     <a href="/admin/orders" class="{{ request()->is('admin/orders') ? 'active' : '' }}">
       <span class="icon">📦</span> Orders
+    </a>
+
+    <a href="/admin/email-template" class="{{  request()->is('admin/email-template*') ? 'active' : '' }}" >
+        <span class="icon">📦</span>Email Template
+    </a>
+    <a href="/admin/payments" 
+      class="{{ request()->is('admin/payments*') ? 'active' : '' }}">
+        <span class="icon">💳</span>Payments
     </a>
   </nav>
 
