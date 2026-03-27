@@ -6,12 +6,10 @@
 
     <!-- Sidebar -->
     <div class="w-1/3 bg-white border-r overflow-y-auto">
-        <div class="p-4 font-semibold text-lg border-b">
-            Users
-        </div>
+        <div class="p-4 font-semibold text-lg border-b">Users</div>
 
-        @foreach($allusers as $user)
-            <div class="user-item p-4 cursor-pointer border-b flex items-center gap-3 transition hover:bg-gray-100"
+        @foreach($users as $user)
+            <div class="user-item p-4 cursor-pointer border-b flex items-center gap-3 hover:bg-gray-100 transition"
                  data-id="{{ $user->id }}">
 
                 <div class="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-full">
@@ -20,35 +18,22 @@
 
                 <div>
                     <div class="font-medium">{{ $user->name }}</div>
-                    <div class="text-sm text-gray-500">Click to chat</div>
+                    <div class="text-xs text-gray-400">Click to chat</div>
                 </div>
-
             </div>
         @endforeach
     </div>
 
-    <!-- Chat Area -->
+    <!-- Chat -->
     <div class="w-2/3 flex flex-col">
 
-        <!-- Header -->
-        <div class="p-4 bg-white border-b font-semibold">
-            Chat
-        </div>
+        <div class="p-4 bg-white border-b font-semibold">Chat</div>
 
-        <!-- Messages -->
         <div id="messages" class="flex-1 p-4 overflow-y-auto space-y-2 bg-gray-50"></div>
 
-        <!-- Input -->
         <div class="p-3 bg-white border-t flex gap-2">
-            <input id="msg"
-                   type="text"
-                   placeholder="Type a message..."
-                   class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
-
-            <button id="sendBtn"
-                    class="bg-blue-500 text-white px-5 py-2 rounded-full hover:bg-blue-600 transition">
-                Send
-            </button>
+            <input id="msg" class="flex-1 border rounded-full px-4 py-2">
+            <button id="sendBtn" class="bg-blue-500 text-white px-5 py-2 rounded-full">Send</button>
         </div>
 
     </div>
@@ -60,68 +45,41 @@
 @push('scripts')
 <script>
 
-let currentChat = null;
-let myId = {{ auth()->id() ?? 0 }};
+document.addEventListener('DOMContentLoaded', function () {
 
-console.log("JS LOADED ✅");
+let currentUser = null;
+let myId = parseInt({{ $vendorId }});
 
-// Click users
-document.querySelectorAll('.user-item').forEach(function(el) {
+// CLICK USER
+document.querySelectorAll('.user-item').forEach(el => {
     el.addEventListener('click', function() {
 
-        document.querySelectorAll('.user-item').forEach(function(item) {
-            item.classList.remove('bg-blue-100', 'border-l-4', 'border-blue-500');
-        });
+        document.querySelectorAll('.user-item').forEach(i =>
+            i.classList.remove('bg-blue-100','border-l-4','border-blue-500')
+        );
 
-        this.classList.add('bg-blue-100', 'border-l-4', 'border-blue-500');
+        this.classList.add('bg-blue-100','border-l-4','border-blue-500');
 
-        let userId = this.getAttribute('data-id');
-        startChat(userId);
-    });
-});
-
-// Send button
-document.getElementById('sendBtn').addEventListener('click', send);
-
-// Enter key
-document.getElementById('msg').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') send();
-});
-
-// Start chat
-function startChat(userId) {
-    fetch('/chat/create', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        },
-        body: JSON.stringify({
-            user_id: userId,
-            vendor_id: myId
-        })
-    })
-    .then(res => res.json())
-    .then(chat => {
-        currentChat = chat.id;
+        currentUser = parseInt(this.dataset.id);
         loadMessages();
     });
-}
+});
 
-// Load messages
+// LOAD
 function loadMessages() {
 
-    if (!currentChat) return;
+    if (!currentUser) return;
 
-    fetch('/chat/messages/' + currentChat)
+    fetch('/chat/messages/' + currentUser)
     .then(res => res.json())
     .then(data => {
 
         let html = '';
 
-        data.forEach(function(m) {
+        data.forEach(m => {
 
-            let me = m.sender_id == myId;
+            let me = parseInt(m.sender_id) === myId;
+
             let align = me ? 'justify-end' : 'justify-start';
             let bubble = me ? 'bg-blue-500 text-white' : 'bg-gray-200';
 
@@ -134,19 +92,20 @@ function loadMessages() {
             `;
         });
 
-        let msgBox = document.getElementById('messages');
-        msgBox.innerHTML = html;
-        msgBox.scrollTop = msgBox.scrollHeight;
+        let box = document.getElementById('messages');
+        box.innerHTML = html;
+        box.scrollTop = box.scrollHeight;
     });
 }
 
-// Send message
+// SEND
+document.getElementById('sendBtn').addEventListener('click', send);
+
 function send() {
 
-    let msgInput = document.getElementById('msg');
-    let msg = msgInput.value;
+    let msg = document.getElementById('msg').value;
 
-    if (!msg.trim() || !currentChat) return;
+    if (!msg || !currentUser) return;
 
     fetch('/chat/send', {
         method:'POST',
@@ -155,20 +114,18 @@ function send() {
             'X-CSRF-TOKEN':'{{ csrf_token() }}'
         },
         body: JSON.stringify({
-            chat_id: currentChat,
+            receiver_id: currentUser,
             message: msg
         })
-    })
-    .then(()=>{
-        msgInput.value = '';
+    }).then(()=>{
+        document.getElementById('msg').value='';
         loadMessages();
     });
 }
 
-// Auto refresh
-setInterval(() => {
-    if(currentChat) loadMessages();
-}, 2000);
+// AUTO REFRESH
+setInterval(loadMessages, 2000);
 
+});
 </script>
 @endpush

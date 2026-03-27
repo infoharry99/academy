@@ -6,25 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
-    public $timestamps = false; // since no updated_at
+    public $timestamps = false;
 
     protected $fillable = [
-        'chat_id',
         'sender_id',
+        'receiver_id',
         'message',
+        'user_id',
         'type',
         'created_at'
     ];
 
-    // Chat relation
-    public function chat()
-    {
-        return $this->belongsTo(Chat::class);
-    }
-
-    // Sender (user or vendor)
     public function sender()
     {
         return $this->belongsTo(User::class, 'sender_id');
+    }
+
+    public function receiver()
+    {
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 }

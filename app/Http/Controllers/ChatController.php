@@ -3,83 +3,75 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Chat;
 use App\Models\Message;
 use App\Models\User;
-use App\Models\Vendor;
 use Illuminate\Support\Facades\Auth;
-
-use function Symfony\Component\String\s;
+use Illuminate\Support\Facades\Session;
 
 class ChatController extends Controller
 {
-    // ================= USER =================
+    // USER SIDE
     public function userChat()
     {
-        $user = Auth::user();
+        $userId = Auth::user()->id;
 
-        $trainerId = auth()->user()->trainer_id;
+        $vendors = User::whereNotNull('trainer_id')->get();
 
-        $vendors = Vendor::
-                    where('id', $trainerId)
-                    ->get();
-
-        $chats = Chat::where('user_id', $user->id)
-            ->with('vendor')
-            ->get();
-
-        return view('dashboard.chat', compact('vendors', 'chats'));
+        return view('dashboard.chat', compact('vendors', 'userId'));
     }
 
-    // ================= VENDOR =================
+    // VENDOR SIDE
     public function vendorChat()
     {
-        $vendor = Auth::user();
+        $vendorId = session('vendor_id');
 
-        $users = User::where('role', 'user')->get();
+        $userIds = \App\Models\Order::distinct()->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
 
-        $chats = Chat::where('vendor_id', $vendor->id)
-            ->with('user')
-            ->get();
-
-        return view('vendor.chat', compact('users', 'chats'));
+        return view('vendor.chat', compact('users', 'vendorId'));
     }
 
-    // ================= CREATE CHAT =================
-    public function createChat(Request $request)
-    {
-
-        if($request->vendor_id ==0) {
-            $vendorId=session('vendor_id');
-        }
-        $chat = Chat::firstOrCreate([
-            'user_id' => $request->user_id,
-            'vendor_id' => $vendorId ?? $request->vendor_id
-        ]);
-
-        return response()->json($chat);
+    // GET MESSAGES
+   public function getMessages($id)
+{
+    // ✅ CORRECT DETECTION
+    if (session()->has('vendor_id')) {
+        $myId = session('vendor_id');
+    } else {
+        $myId = Auth::id();
     }
 
-    // ================= GET MESSAGES =================
-    public function getMessages(Chat $chat)
-    {
-        return Message::where('chat_id', $chat->id)
-            ->with('sender')
-            ->orderBy('created_at')
-            ->get();
+    $messages = Message::where(function ($q) use ($myId, $id) {
+        $q->where('sender_id', $myId)
+          ->where('receiver_id', $id);
+    })
+    ->orWhere(function ($q) use ($myId, $id) {
+        $q->where('sender_id', $id)
+          ->where('receiver_id', $myId);
+    })
+    ->orderBy('created_at')
+    ->get();
+
+    return response()->json($messages);
+}
+
+    // SEND MESSAGE
+   public function sendMessage(Request $request)
+{
+    if (session()->has('vendor_id')) {
+        $senderId = session('vendor_id');
+    } else {
+        $senderId = Auth::user()->id;
     }
 
-    // ================= SEND MESSAGE =================
-    public function sendMessage(Request $request)
-    {
-        $msg = Message::create([
-            'chat_id' => $request->chat_id,
-            'sender_id' => Auth::id(),
-            'message' => $request->message,
-            'type' => 'text',
-            'created_at' => now()
-        ]);
+    Message::create([
+        'sender_id' => $senderId,
+        'receiver_id' => $request->receiver_id,
+        'message' => $request->message,
+        'type' => 'text',
+        'created_at' => now()
+    ]);
 
-        return response()->json($msg);
-    }
+    return response()->json(['status' => true]);
+}
 }
