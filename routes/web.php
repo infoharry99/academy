@@ -17,6 +17,34 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\TrainerStatsController;
 use Illuminate\Support\Facades\Mail;
 
+
+Route::get('/matches', function () {
+    return view('dashboard.matches');
+})->name('matches');
+
+Route::get('/feedback', function () {
+    return view('dashboard.feedback');
+})->name('feedback');
+Route::get('/rankings', function () {
+    return view('dashboard.rankings');
+})->name('rankings');
+
+
+Route::get('/orders', function () {
+    return view('dashboard.orders');
+})->name('orders');
+
+Route::get('/profiles', function () {
+    return view('dashboard.profile');
+})->name('profiles');
+
+Route::get('/shop', function () {
+    return view('dashboard.shop');
+})->name('shop');
+
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard');
     Route::get('/',[HomeController::class,'index']);
     Route::get('/platform/{id}', [HomeController::class, 'index']);
 

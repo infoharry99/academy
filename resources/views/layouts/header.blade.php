@@ -1,12 +1,13 @@
 <header>
   <div class="header-inner">
-    <a href="/" class="logo">⚡<span>Sports</span>Academy</a>
+    <a href="/" class="logo"><span>Adnan Cricket Academy  </span></a>
     <nav>
       <a href="/">Home</a>
 
       @if(auth()->check())
       <div class="nav-user">👋 {{ auth()->user()->name }}</div>
-      <a href="/profile" class="btn btn-ghost">Profile</a>
+      <!-- <a href="/profile" class="btn btn-ghost">Profile</a> -->
+      <a href="/dashboard" class="btn btn-ghost">Profile</a>
       <a href="/cart" class="btn btn-ghost cart-btn">
         🛒 Cart
       </a>

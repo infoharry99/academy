@@ -142,6 +142,7 @@ class OrderController extends Controller
             ->orderBy('week')
             ->get();
 
+            // dd($attendance);
         // Prepare graph data
         $chartLabels = [];
         $chartData = [];
@@ -156,7 +157,7 @@ class OrderController extends Controller
 
         foreach ($attendance as $a) {
             $attendanceLabels[] = $a->week;
-            $attendanceData[] = $a->attendance;
+            $attendanceData[] = $a->attendance_count;
         }
 
         return view('course-start', compact(

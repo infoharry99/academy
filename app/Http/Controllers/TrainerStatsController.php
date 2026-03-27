@@ -28,6 +28,9 @@ class TrainerStatsController extends Controller
     public function create($categoryId, $userId = null, $courseId = null)
     {
         try {
+            $trainerId = session('vendor_id') ?? auth()->id();
+
+            $allusers = User::where('trainer_id', $trainerId)->get();
 
             if($categoryId == 8){
 
@@ -75,7 +78,7 @@ class TrainerStatsController extends Controller
                 'course' => $course
             ]);
 
-            return view('trainer.stats.create', compact('category', 'fields', 'categoryId', 'user', 'course'));
+            return view('trainer.stats.create', compact('category', 'fields', 'categoryId', 'user', 'course', 'allusers'));
 
         } catch (\Exception $e) {
             Log::error('Error loading stats form', [

@@ -284,7 +284,7 @@
   <aside class="sidebar">
 
     <div class="sidebar-brand">
-      <div class="sidebar-logo">🏪 <span>Sports</span>Academy</div>
+      <div class="sidebar-logo">🏪 <span>Adnan Academy</span></div>
       <div class="sidebar-sub">Vendor Panel</div>
     </div>
 
@@ -315,6 +315,10 @@
         <a href="/vendor/course/order" class="nav-link {{ request()->is('vendor/course/order') ? 'active' : '' }}">
           <div class="nav-icon" style="background:#fef3c7">📦</div>
           Training Orders
+        </a>
+        <a href="/stats/create/10/5/13" class="nav-link {{ request()->is('vendor/course/order') ? 'active' : '' }}">
+          <div class="nav-icon" style="background:#fef3c7">📦</div>
+          Add Stats
         </a>
 
       <a href="/vendor/profile" class="nav-link {{ request()->is('vendor/profile*') ? 'active' : '' }}">
@@ -355,7 +359,7 @@
 
     <!-- Footer -->
     <div class="panel-footer">
-      <span>© <strong>Sports Academy</strong> Vendor Panel 2026</span>
+      <span>© <strong>Adnan Cricket Academy</strong> Vendor Panel 2026</span>
       <span style="font-size:0.75rem;color:var(--text-muted)">Need help? Contact support</span>
     </div>
 

@@ -270,10 +270,16 @@
         <form method="POST" action="{{ route('trainer.stats.store') }}" novalidate>
             @csrf
             
-
+               <select name="userss " class="form-body"> 
+                    <option value="">Select Category</option>
+                    @foreach($allusers as $user)
+                        <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+               <select>
 
             <input type="hidden" name="category_id" value="{{ $categoryId }}">
             <input type="hidden" name="user_id" value="{{ $user->id ?? 1 }}">
+            
             <input type="hidden" name="course_id" value="{{ $course->id ?? 1 }}">
 
             <div class="form-card">
