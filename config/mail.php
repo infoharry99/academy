@@ -45,6 +45,56 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
+         'smtp1' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'ssl',
+                'username' => 'phil.andreson@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
+        
+            'smtp2' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'tls',
+                'username' => 'phil.andreson1@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
+        
+            'smtp3' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'ssl',
+                'username' => 'phil.andreson2@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
+            'smtp4' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'ssl',
+                'username' => 'phil.andreson3@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
+            'smtp5' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'ssl',
+                'username' => 'phil.andreson5@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
+            'smtp6' => [
+                'transport' => 'smtp',
+                'host' => 'mail.nexteck.uk',
+                'port' => 465,
+                'encryption' => 'ssl',
+                'username' => 'phil.andreson6@nexteck.uk',
+                'password' => 'Phil.andreson1!',
+            ],
 
         'ses' => [
             'transport' => 'ses',
