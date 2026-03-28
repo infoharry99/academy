@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class ChatController extends Controller
@@ -72,6 +73,16 @@ class ChatController extends Controller
         'type' => 'text',
         'created_at' => now()
     ]);
+
+    return response()->json(['status' => true]);
+}
+
+public function sendEmail(Request $request)
+{
+    Mail::raw($request->message, function ($mail) use ($request) {
+        $mail->to($request->email)
+             ->subject('New Message from Chat');
+    });
 
     return response()->json(['status' => true]);
 }

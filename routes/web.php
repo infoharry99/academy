@@ -52,6 +52,7 @@ Route::get('/dashboard', function () {
 use App\Http\Controllers\ChatController;
 
 
+    Route::post('/send-email', [ChatController::class, 'sendEmail']);
 
     // USER CHAT
     Route::get('/user/chat', [ChatController::class, 'userChat'])->name('user.chat');
