@@ -333,7 +333,7 @@
         </a>
         <a href="/stats/create/10/5/13" class="nav-link {{ request()->is('vendor/course/order') ? 'active' : '' }}">
           <div class="nav-icon" style="background:#fef3c7">📦</div>
-          Add Stats
+          Add Performance
         </a>
 
         <a href="/vendor/userlist" class="nav-link {{ request()->is('vendor/userlist*') ? 'active' : '' }}">
@@ -344,10 +344,10 @@
         <div class="nav-icon" style="background:#e0f2fe">📦</div>
         Transaction Details
       </a>
-      <a href="/vendor/performance" class="nav-link {{ request()->is('vendor/performance*') ? 'active' : '' }}">
+      <!-- <a href="/vendor/performance" class="nav-link {{ request()->is('vendor/performance*') ? 'active' : '' }}">
         <div class="nav-icon" style="background:#e0f2fe"> 📊</div>
         Performance
-      </a>
+      </a> -->
       <a href="/vendor/coach" class="nav-link {{ request()->is('vendor/coach*') ? 'active' : '' }}">
         <div class="nav-icon" style="background:#e0f2fe">👤</div>
         Coach

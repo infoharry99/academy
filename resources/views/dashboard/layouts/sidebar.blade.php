@@ -74,6 +74,15 @@
     </a>
 
     <a
+      href="{{ route('payments') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-lg transition
+      {{ request()->routeIs('payments') 
+        ? 'bg-green-700/40 text-green-300' 
+        : 'hover:bg-white/10' }}"
+    >
+      <i class="fa-solid fa-trophy"></i> Transactions Details
+    </a>
+    <a
        href="{{ route('feedback') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-lg transition
       {{ request()->routeIs('feedback') 
@@ -81,6 +90,15 @@
         : 'hover:bg-white/10' }}"
     >
       <i class="fa-solid fa-comment"></i> Feedback
+    </a>
+     <a
+       href="{{ route('broadcast') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-lg transition
+      {{ request()->routeIs('broadcast') 
+        ? 'bg-green-700/40 text-green-300' 
+        : 'hover:bg-white/10' }}"
+    >
+      <i class="fa-solid fa-comment"></i> Broadcast
     </a>
 
     <a

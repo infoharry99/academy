@@ -211,6 +211,117 @@
 
     </div>
 
+    <div style="background:#fff; border:1px solid var(--border); border-radius:20px; padding:22px; margin-top:24px;">
+
+   <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+
+    <div class="section-heading">📍 Academy Locations</div>
+
+    <button onclick="openLocationModal()"
+        style="background:#1a6fd4; color:#fff; padding:8px 16px; border-radius:10px; font-size:13px; font-weight:600;">
+        + Add Location
+    </button>
+
+</div>
+
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+
+        <div style="background:#eef1fe; padding:16px; border-radius:12px;">
+            <div style="font-weight:600;">Adnan Main Ground</div>
+            <div style="font-size:13px; color:#666;">UK</div>
+            <div style="font-size:12px; color:#999;">5 Practice Pitches</div>
+        </div>
+
+        <div style="background:#dcfce7; padding:16px; border-radius:12px;">
+            <div style="font-weight:600;">Cricket Cricket Hub</div>
+            <div style="font-size:13px; color:#666;">UK</div>
+            <div style="font-size:12px; color:#999;">Bowling Machines</div>
+        </div>
+
+        <div style="background:#fef3c7; padding:16px; border-radius:12px;">
+            <div style="font-weight:600;">Cricket Center</div>
+            <div style="font-size:13px; color:#666;">UK</div>
+            <div style="font-size:12px; color:#999;">Gym + Strength</div>
+        </div>
+
+    </div>
+</div>
+
+<div style="background:#fff; border:1px solid var(--border); border-radius:20px; padding:22px; margin-top:24px;">
+
+    <div class="section-heading">📅 Weekly Coaching Schedule</div>
+
+    <table style="width:100%; font-size:14px; margin-top:10px;">
+        <thead style="background:#f3f4f6;">
+            <tr>
+                <th style="padding:10px;text-align:left;">Day</th>
+                <th style="padding:10px;text-align:left;">Location</th>
+                <th style="padding:10px;text-align:left;">Timing</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td style="padding:10px;">Monday</td>
+                <td>Adnan Ground</td>
+                <td>6 AM - 9 AM</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;">Tuesday</td>
+                <td>Cricket Hub</td>
+                <td>7 AM - 10 AM</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;">Wednesday</td>
+                <td>Adnan Ground</td>
+                <td>6 AM - 9 AM</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;">Thursday</td>
+                <td>Cricket Center</td>
+                <td>5 PM - 7 PM</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;">Friday</td>
+                <td>Cricket Hub</td>
+                <td>6 AM - 9 AM</td>
+            </tr>
+
+            <tr>
+                <td style="padding:10px;">Saturday</td>
+                <td>Adnan Ground</td>
+                <td>6 AM - 11 AM</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div style="background:#fff; border:1px solid var(--border); border-radius:20px; padding:22px; margin-top:24px;">
+
+    <div class="section-heading">🏏 Coaching Distribution</div>
+
+    <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+
+        <div style="background:#eef1fe; padding:10px; border-radius:10px;">
+            Adnan Ground — 60% Time
+        </div>
+
+        <div style="background:#dcfce7; padding:10px; border-radius:10px;">
+            Cricket Hub — 25% Time
+        </div>
+
+        <div style="background:#fef3c7; padding:10px; border-radius:10px;">
+            Cricket Center — 15% Time
+        </div>
+
+    </div>
+</div>
+
     {{-- ══ STATS ROW ══ --}}
     <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:14px; margin-bottom:24px;">
         <div class="stat-card">

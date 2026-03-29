@@ -37,6 +37,13 @@ Route::get('/orders', function () {
 Route::get('/profiles', function () {
     return view('dashboard.profile');
 })->name('profiles');
+Route::get('/payments', function () {
+    return view('dashboard.payments');
+})->name('payments');
+
+Route::get('/broadcast', function () {
+    return view('dashboard.broadcast');
+})->name('broadcast');
 
 Route::get('/shop', function () {
     return view('dashboard.shop');
