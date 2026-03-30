@@ -52,9 +52,9 @@
         <div class="text-center mb-16">
            
 
-            <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+            {{-- <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
                 Cricket <span class="text-yellow-500">Shop</span>
-            </h2>
+            </h2> --}}
         </div>
 
         <!-- ================= COURSES ================= -->

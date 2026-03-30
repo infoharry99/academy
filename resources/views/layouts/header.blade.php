@@ -100,6 +100,9 @@
         <a href="#about" class="block">About</a>
         <a href="#programs" class="block">Programs</a>
         <a href="#shop" class="block">Shop</a>
+         <a href="/dashboard" class="block">
+            Dashboard
+        </a>
 
       @if(auth()->check())
 

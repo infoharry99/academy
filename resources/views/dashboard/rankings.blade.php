@@ -132,7 +132,7 @@
           </td>
 
           <td class="p-4 font-medium">
-            Jasprit B.
+            Joe Root
           </td>
 
           <td class="p-4 text-gray-600">
@@ -163,7 +163,7 @@
           </td>
 
           <td class="p-4 font-medium">
-            Ravindra J.
+            Michel G.
           </td>
 
           <td class="p-4 text-gray-600">
@@ -194,7 +194,7 @@
           </td>
 
           <td class="p-4 font-medium">
-            Rishabh P.
+            Moeen A.
           </td>
 
           <td class="p-4 text-gray-600">
@@ -225,7 +225,7 @@
           </td>
 
           <td class="p-4 font-medium">
-            Hardik P.
+            Krish N.
           </td>
 
           <td class="p-4 text-gray-600">
@@ -256,7 +256,7 @@
           </td>
 
           <td class="p-4 font-medium">
-            Shubman G.
+            Dwight Y.
           </td>
 
           <td class="p-4 text-gray-600">

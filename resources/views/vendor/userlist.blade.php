@@ -54,7 +54,7 @@
                     <th class="p-4 text-left">Phone</th>
                     <th class="p-4 text-left">Status</th>
                     <th class="p-4 text-left">Joined</th>
-                    <th class="p-4 text-left">Action</th>
+                    {{-- <th class="p-4 text-left">Action</th> --}}
                 </tr>
             </thead>
 
@@ -79,9 +79,9 @@
                         </span>
                     </td>
                     <td class="p-4">12 Mar 2026</td>
-                    <td class="p-4">
+                    {{-- <td class="p-4">
                         <button class="text-blue-600 text-sm">View</button>
-                    </td>
+                    </td> --}}
                 </tr>
 
                 <!-- USER 2 -->
@@ -103,9 +103,9 @@
                         </span>
                     </td>
                     <td class="p-4">10 Mar 2026</td>
-                    <td class="p-4">
+                    {{-- <td class="p-4">
                         <button class="text-blue-600 text-sm">View</button>
-                    </td>
+                    </td> --}}
                 </tr>
 
                 <!-- USER 3 -->
@@ -127,9 +127,9 @@
                         </span>
                     </td>
                     <td class="p-4">05 Mar 2026</td>
-                    <td class="p-4">
+                    {{-- <td class="p-4">
                         <button class="text-blue-600 text-sm">View</button>
-                    </td>
+                    </td> --}}
                 </tr>
 
             </tbody>

@@ -25,7 +25,7 @@
         <div>
 
           <h3 class="text-lg font-semibold">
-            Coach Sharma
+            Coach Anderson
           </h3>
 
           <p class="text-sm text-gray-500">
@@ -149,7 +149,7 @@
         <div>
 
           <h3 class="text-lg font-semibold">
-            Coach Patel
+            Coach Root
           </h3>
 
           <p class="text-sm text-gray-500">
