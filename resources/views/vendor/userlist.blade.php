@@ -11,17 +11,17 @@
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">Total Users</p>
-            <h2 class="text-2xl font-bold mt-1">1,245</h2>
+            <h2 class="text-2xl font-bold mt-1">200</h2>
         </div>
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">Active Users</p>
-            <h2 class="text-2xl font-bold mt-1 text-green-600">1,032</h2>
+            <h2 class="text-2xl font-bold mt-1 text-green-600">150</h2>
         </div>
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">New This Month</p>
-            <h2 class="text-2xl font-bold mt-1 text-blue-600">+86</h2>
+            <h2 class="text-2xl font-bold mt-1 text-blue-600">+56</h2>
         </div>
 
     </div>

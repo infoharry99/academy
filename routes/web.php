@@ -17,6 +17,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\TrainerStatsController;
 use App\Http\Controllers\StudentStatsController;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\BroadcastController;
 
 
 Route::get('/matches', function () {
@@ -42,9 +43,7 @@ Route::get('/payments', function () {
     return view('dashboard.payments');
 })->name('payments');
 
-Route::get('/broadcast', function () {
-    return view('dashboard.broadcast');
-})->name('broadcast');
+Route::get('/broadcast',  [BroadcastController::class, 'userindex'])->name('broadcast');
 
 Route::get('/shop', function () {
     return view('dashboard.shop');
@@ -57,7 +56,10 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 
+
+
 use App\Http\Controllers\ChatController;
+
 
 
     Route::post('/send-email', [ChatController::class, 'sendEmail']);
@@ -151,9 +153,17 @@ Route::get('/vendor/userlist', function () {
     return view('vendor.userlist');
 })->name('userlist');
 
-Route::get('/vendor/bordcast', function () {
-    return view('vendor.bordcast');
-})->name('bordcast');
+// Route::get('/vendor/bordcast', function () {
+//     return view('vendor.bordcast');
+// })->name('bordcast');
+
+
+
+// store message
+Route::post('/vendor/bordcast', [BroadcastController::class, 'store']);
+
+// get messages
+Route::get('/vendor/bordcast', [BroadcastController::class, 'index']);
 
 Route::get('/vendor/coach', function () {
     return view('vendor.coach');

@@ -13,13 +13,13 @@
 
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
 
-                    <h1 class="text-3xl md:text-5xl font-bold">
+                    {{-- <h1 class="text-3xl md:text-5xl font-bold">
                         {{ $b->title }}
                     </h1>
 
                     <p class="text-sm md:text-lg mt-3 max-w-xl">
                         {{ $b->description }}
-                    </p>
+                    </p> --}}
 
                 </div>
 

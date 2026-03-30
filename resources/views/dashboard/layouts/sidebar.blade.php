@@ -91,6 +91,15 @@
     >
       <i class="fa-solid fa-comment"></i> Feedback
     </a>
+    <a
+     href="{{ route('rankings') }}"
+      class="flex items-center gap-3 px-4 py-3 rounded-lg transition
+      {{ request()->routeIs('rankings') 
+        ? 'bg-green-700/40 text-green-300' 
+        : 'hover:bg-white/10' }}"
+    >
+      <i class="fa-solid fa-trophy"></i> Rankings
+    </a>
      <a
        href="{{ route('broadcast') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-lg transition
@@ -101,15 +110,7 @@
       <i class="fa-solid fa-comment"></i> Broadcast
     </a>
 
-    <a
-     href="{{ route('rankings') }}"
-      class="flex items-center gap-3 px-4 py-3 rounded-lg transition
-      {{ request()->routeIs('rankings') 
-        ? 'bg-green-700/40 text-green-300' 
-        : 'hover:bg-white/10' }}"
-    >
-      <i class="fa-solid fa-trophy"></i> Rankings
-    </a>
+    
 
     <a
       href="{{ route('orders') }}"

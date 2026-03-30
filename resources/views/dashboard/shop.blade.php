@@ -133,7 +133,7 @@
           <div class="flex justify-between items-center mt-4">
 
             <span class="text-yellow-500 text-lg font-semibold">
-              ₹4,999
+              £4,999
             </span>
 
             <button
@@ -172,7 +172,7 @@
           <div class="flex justify-between items-center mt-4">
 
             <span class="text-yellow-500 text-lg font-semibold">
-              ₹2,499
+              £2,499
             </span>
 
             <button
@@ -212,7 +212,7 @@
           <div class="flex justify-between items-center mt-4">
 
             <span class="text-yellow-500 text-lg font-semibold">
-              ₹1,299
+              £1,299
             </span>
 
             <button

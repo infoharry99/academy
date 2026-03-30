@@ -140,7 +140,7 @@ function renderTable() {
             <td>#${p.id}</td>
             <td style="font-weight:500;">${p.name}</td>
             <td style="color:var(--muted)">${p.email}</td>
-            <td>₹${p.amount}</td>
+            <td>£${p.amount}</td>
             <td class="${p.status === 'Paid' ? 'status-paid' : 'status-pending'}">
                 ${p.status}
             </td>
@@ -162,7 +162,7 @@ window.generateInvoice = function(id){
         <p><strong>Invoice ID:</strong> INV-${payment.id}</p>
         <p><strong>Name:</strong> ${payment.name}</p>
         <p><strong>Email:</strong> ${payment.email}</p>
-        <p><strong>Amount:</strong> ₹${payment.amount}</p>
+        <p><strong>Amount:</strong> £${payment.amount}</p>
         <p><strong>Status:</strong> ${payment.status}</p>
         <p><strong>Date:</strong> ${formatDate(payment.date)}</p>
     `;

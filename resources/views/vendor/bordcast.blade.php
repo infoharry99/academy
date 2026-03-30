@@ -19,7 +19,7 @@
         <h3 class="font-semibold mb-4">📨 Send Broadcast</h3>
 
         <!-- USER TYPE -->
-        <div class="mb-4">
+        {{-- <div class="mb-4">
             <label class="block text-sm font-medium mb-1">Select Users</label>
 
             <select id="userType" class="w-full border rounded-lg px-4 py-2">
@@ -27,7 +27,7 @@
                 <option value="single">Single User</option>
                 <option value="multiple">Multiple Users</option>
             </select>
-        </div>
+        </div> --}}
 
         <!-- USER SELECTION -->
         <div id="userSelectBox" class="mb-4 hidden">
@@ -193,7 +193,7 @@ document.querySelectorAll('.userCheckbox').forEach(cb => {
 });
 
 // FINAL SUBMIT
-function sendBroadcast() {
+/*function sendBroadcast() {
 
     let users = [];
     let channels = [];
@@ -219,6 +219,48 @@ function sendBroadcast() {
     console.log(data);
 
     alert("✅ Broadcast Ready!\nCheck console for data");
+}*/
+
+function sendBroadcast() {
+
+    let data = {
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    // validation
+    if (!data.message) {
+        alert("❌ Message is required");
+        return;
+    }
+
+    fetch("{{ url('/vendor/bordcast') }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.success) {
+            alert("✅ Broadcast Sent Successfully!");
+
+            // clear form
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+
+            // optional: reload page
+            location.reload();
+        } else {
+            alert("❌ Something went wrong");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("❌ Server Error");
+    });
 }
 
 </script>

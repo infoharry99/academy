@@ -490,11 +490,11 @@
         <div class="grid-attend">
 
           <div class="field">
-            <label>Month 1 <span class="month-hint">Jan</span></label>
+            <label>Current Month <span class="month-hint">{{ date('F') }}</span></label>
             <input type="number" name="attendance[1]" placeholder="Sessions" min="0">
           </div>
 
-          <div class="field">
+          {{-- <div class="field">
             <label>Month 2 <span class="month-hint">Feb</span></label>
             <input type="number" name="attendance[2]" placeholder="Sessions" min="0">
           </div>
@@ -527,7 +527,7 @@
           <div class="field">
             <label>Month 8 <span class="month-hint">Aug</span></label>
             <input type="number" name="attendance[8]" placeholder="Sessions" min="0">
-          </div>
+          </div> --}}
 
         </div>
       </div>

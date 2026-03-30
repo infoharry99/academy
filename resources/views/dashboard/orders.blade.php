@@ -38,7 +38,7 @@
       <div class="text-right">
 
         <p class="font-semibold text-lg">
-          ₹4,999
+          £4,999
         </p>
 
         <span class="text-green-600 text-sm font-medium">
@@ -70,7 +70,7 @@
       <div class="text-right">
 
         <p class="font-semibold text-lg">
-          ₹1,299
+          £1,299
         </p>
 
         <span class="text-yellow-500 text-sm font-medium">
@@ -102,7 +102,7 @@
       <div class="text-right">
 
         <p class="font-semibold text-lg">
-          ₹3,499
+          £3,499
         </p>
 
         <span class="text-green-600 text-sm font-medium">
@@ -134,7 +134,7 @@
       <div class="text-right">
 
         <p class="font-semibold text-lg">
-          ₹999
+          £999
         </p>
 
         <span class="text-green-600 text-sm font-medium">

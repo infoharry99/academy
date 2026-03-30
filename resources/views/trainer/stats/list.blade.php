@@ -344,9 +344,9 @@
       <h1>Student Stats List</h1>
       <p>Manage and review cricket performance records</p>
     </div>
-    <div class="header-actions">
+    {{-- <div class="header-actions">
       <span class="count-badge" id="countBadge">6 players</span>
-    </div>
+    </div> --}}
   </div>
 
   <!-- TOOLBAR -->
@@ -372,6 +372,7 @@
           <th>Matches</th>
           <th>Strike Rate</th>
           <th>Joined</th>
+          <th>Action</th>
         </tr>
       </thead>
         <tbody id="tableBody">
@@ -425,6 +426,20 @@
                     <td>
                         {{ $row->created_at->format('d M Y') }}
                     </td>
+                    <td class="p-4 text-center">
+                      <button 
+                          onclick="openModal(this)"
+                          data-name="{{ $row->user->name ?? 'Unknown' }}"
+                          data-runs="{{ $row->runs }}"
+                          data-wickets="{{ $row->wickets }}"
+                          data-matches="{{ $row->total_matches }}"
+                          data-strike="{{ $row->strike_rate }}"
+                          data-date="{{ $row->created_at->format('d M Y') }}"
+                          class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-100 rounded-lg hover:bg-blue-200 transition">
+                          
+                          👁
+                      </button>
+                  </td>
                 </tr>
 
                 @empty
@@ -454,6 +469,93 @@
   </div>
 
 </div>
+
+<div id="viewModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50">
+
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-xl">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between p-4 border-b">
+            <h3 class="text-lg font-semibold">Player Details</h3>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-black text-xl">&times;</button>
+        </div>
+
+        <!-- Body -->
+        <div class="p-5 space-y-3 text-sm">
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Name</span>
+                <span id="m_name" class="font-medium"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Runs</span>
+                <span id="m_runs"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Wickets</span>
+                <span id="m_wickets"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Matches</span>
+                <span id="m_matches"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Strike Rate</span>
+                <span id="m_strike"></span>
+            </div>
+
+            <div class="flex justify-between">
+                <span class="text-gray-500">Joined</span>
+                <span id="m_date"></span>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t text-right">
+            <button onclick="closeModal()" 
+                class="px-4 py-2 text-sm bg-gray-200 rounded-lg hover:bg-gray-300">
+                Close
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+function openModal(btn) {
+    const modal = document.getElementById('viewModal');
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+
+    document.getElementById('m_name').innerText = btn.dataset.name;
+    document.getElementById('m_runs').innerText = btn.dataset.runs || '-';
+    document.getElementById('m_wickets').innerText = btn.dataset.wickets || '-';
+    document.getElementById('m_matches').innerText = btn.dataset.matches || '-';
+    document.getElementById('m_strike').innerText = btn.dataset.strike || '-';
+    document.getElementById('m_date').innerText = btn.dataset.date;
+}
+
+function closeModal() {
+    const modal = document.getElementById('viewModal');
+
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+// close when clicking outside
+document.getElementById('viewModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+</script>
 
 <script>
   function initials(name) {

@@ -7,17 +7,17 @@
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">Total Users</p>
-            <h2 class="text-2xl font-bold mt-1">1,245</h2>
+            <h2 class="text-2xl font-bold mt-1">200</h2>
         </div>
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">Active Users</p>
-            <h2 class="text-2xl font-bold mt-1 text-green-600">1,032</h2>
+            <h2 class="text-2xl font-bold mt-1 text-green-600">150</h2>
         </div>
 
         <div class="bg-white p-5 rounded-xl border shadow-sm">
             <p class="text-sm text-gray-500">New This Month</p>
-            <h2 class="text-2xl font-bold mt-1 text-blue-600">+86</h2>
+            <h2 class="text-2xl font-bold mt-1 text-blue-600">+56</h2>
         </div>
 
     </div>
@@ -69,9 +69,23 @@
                     <td class="p-4">Active</td>
                     <td class="p-4"> {{ date('M j, Y', strtotime($user->created_at)) }}  </td>
                     <td class="p-4">
-                        <div class="flex items-center gap-2">
+                        {{-- <div class="flex items-center gap-2">
                             <a href="{{ url('/student-stats/'.$user->id) }}" class="btn btn-primary">Enter Stats</a>
                             <a href="{{ url('/student-stats/list/'.$user->id) }}" class="btn btn-secondary">Stats List</a>      
+                        </div> --}}
+
+                        <div class="flex items-center gap-3">
+
+                            <a href="{{ url('/student-stats/'.$user->id) }}"
+                            class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg shadow hover:bg-blue-700 transition duration-200">
+                                📊 Enter Stats
+                            </a>
+
+                            <a href="{{ url('/student-stats/list/'.$user->id) }}"
+                            class="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-lg shadow hover:bg-gray-300 transition duration-200">
+                                📋 Stats List
+                            </a>
+
                         </div>
 
                     </td>

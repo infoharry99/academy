@@ -6,12 +6,12 @@
 
     <!-- HEADER -->
     <div class="bg-gradient-to-r from-blue-600 to-green-500 text-white p-5 rounded-xl">
-        <h2 class="text-xl font-bold">📢 Contact & Broadcast</h2>
-        <p class="text-sm opacity-90">Send message to Admin, Coach or Support Team</p>
+        <h2 class="text-xl font-bold">📢 Broadcast Messages</h2>
+        {{-- <p class="text-sm opacity-90">Send message to Admin, Coach or Support Team</p> --}}
     </div>
 
     <!-- FORM -->
-    <div class="bg-white p-6 rounded-xl border shadow-sm">
+    {{-- <div class="bg-white p-6 rounded-xl border shadow-sm">
 
         <h3 class="font-semibold mb-4">📨 Send Message</h3>
 
@@ -94,7 +94,7 @@
             🚀 Send Message
         </button>
 
-    </div>
+    </div> --}}
 
     <!-- RECENT MESSAGES -->
     <div class="bg-white rounded-xl border shadow-sm">
@@ -105,32 +105,44 @@
 
         <table class="w-full text-sm">
 
-            <thead class="bg-gray-100">
+            {{-- <thead class="bg-gray-100">
                 <tr>
                     <th class="p-4 text-left">To</th>
                     <th class="p-4 text-left">Subject</th>
                     <th class="p-4 text-left">Type</th>
                     <th class="p-4 text-left">Status</th>
                 </tr>
-            </thead>
+            </thead> --}}
 
             <tbody class="divide-y">
 
-                <tr>
-                    <td class="p-4">Coach</td>
-                    <td class="p-4">Training Query</td>
-                    <td class="p-4">WhatsApp</td>
-                    <td class="p-4 text-green-600">Sent</td>
-                </tr>
+            @forelse($messages as $msg)
+            <tr>
+                <td class="p-4">Admin</td> {{-- static for now --}}
+                
+                <td class="p-4">
+                    {{ $msg->subject ?? 'No Subject' }}
+                </td>
 
-                <tr>
-                    <td class="p-4">Admin</td>
-                    <td class="p-4">Payment Issue</td>
-                    <td class="p-4">Email</td>
-                    <td class="p-4 text-yellow-600">Pending</td>
-                </tr>
+                <td class="p-4">
+                    Message
+                </td>
 
-            </tbody>
+                <td class="p-4 
+                    {{ $msg->status == 'sent' ? 'text-green-600' : 'text-yellow-600' }}">
+                    
+                    {{ ucfirst($msg->status) }}
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="4" class="p-4 text-center text-gray-500">
+                    No messages found
+                </td>
+            </tr>
+            @endforelse
+
+</tbody>
 
         </table>
 

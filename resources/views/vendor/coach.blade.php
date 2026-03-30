@@ -42,7 +42,7 @@
 
         <!-- CARD -->
         <div class="bg-white p-5 rounded-xl shadow border">
-            <h3 class="font-semibold mb-3">🏏 Rahul Sir</h3>
+           <h3 class="font-semibold mb-3">🏏 James Anderson</h3>
 
             <div class="space-y-2 text-sm">
                 <p>Batting Sessions: <strong>22</strong></p>
@@ -56,7 +56,7 @@
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow border">
-            <h3 class="font-semibold mb-3">🎯 Amit Sir</h3>
+            <h3 class="font-semibold mb-3">🎯 Ben Stokes</h3>
 
             <div class="space-y-2 text-sm">
                 <p>Bowling Sessions: <strong>18</strong></p>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="bg-white p-5 rounded-xl shadow border">
-            <h3 class="font-semibold mb-3">💪 Suresh Sir</h3>
+            <h3 class="font-semibold mb-3">💪 Joe Root</h3>
 
             <div class="space-y-2 text-sm">
                 <p>Fitness Sessions: <strong>15</strong></p>
@@ -114,7 +114,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="p-4 flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-bold">R</div>
-                        Rahul Sir
+                        James Anderson
                     </td>
                     <td class="p-4">Head Coach</td>
                     <td class="p-4">Batting</td>
@@ -131,7 +131,7 @@
                 <tr class="hover:bg-gray-50">
                     <td class="p-4 flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold">A</div>
-                        Amit Sir
+                        Alastair Cook
                     </td>
                     <td class="p-4">Assistant</td>
                     <td class="p-4">Bowling</td>
