@@ -146,12 +146,12 @@
       <i class="fa-solid fa-user"></i> My Profile
     </a>
 
-    <a
+    <!-- <a
       href="/"
       class="flex items-center gap-3 hover:text-yellow-400 transition"
     >
       <i class="fa-solid fa-store"></i> Marketplace
-    </a>
+    </a> -->
 
     <a
       href="/"
