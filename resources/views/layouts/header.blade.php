@@ -49,10 +49,7 @@
             🛒 Cart
         </a>
 
-        <a href="/my-orders"
-           class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-            📦 Orders
-        </a>
+       
 
         <div class="border-t"></div>
 

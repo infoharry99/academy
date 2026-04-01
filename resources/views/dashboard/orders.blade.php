@@ -4,148 +4,87 @@
 
 <div class="max-w-5xl">
 
-  <!-- Page Title -->
+    <!-- Title -->
+    <h2 class="text-2xl font-semibold mb-8 flex items-center gap-2">
+        💰 Marketplace
+        <span class="text-yellow-500">Orders</span>
+    </h2>
 
-  <h2 class="text-2xl font-semibold mb-8 flex items-center gap-2">
+    {{-- EMPTY STATE --}}
+    @if($orders->count() == 0)
 
-    💰 Marketplace
-    <span class="text-yellow-500">
-      Orders
-    </span>
+        <div class="bg-white p-10 rounded-xl shadow text-center">
+            <h3 class="text-lg font-semibold mb-2">No Orders Found</h3>
+            <p class="text-gray-500 mb-4">You haven’t placed any order yet</p>
 
-  </h2>
+            <a href="/products"
+               class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+               Browse Products
+            </a>
+        </div>
 
+    @else
 
-  <div class="space-y-6">
+    <div class="space-y-6">
 
-    <!-- Order 1 -->
+        @foreach($orders as $order)
 
-    <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
+        @php
+            $status = $order->status ?? 'pending';
+        @endphp
 
-      <div>
+        <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
 
-        <h3 class="font-semibold text-lg">
-          Pro Cricket Bat
-        </h3>
+            <!-- LEFT -->
+            <div>
+                <h3 class="font-semibold text-lg">
+                    Order #{{ str_pad($order->id, 3, '0', STR_PAD_LEFT) }}
+                </h3>
 
-        <p class="text-gray-500 text-sm">
-          #ORD-001 • Mar 8
-        </p>
+                <p class="text-gray-500 text-sm">
+                    {{ $order->created_at->format('d M Y') }}
+                </p>
+            </div>
 
-      </div>
+            <!-- RIGHT -->
+            <div class="text-right">
 
+                <p class="font-semibold text-lg text-green-600">
+                    £{{ number_format($order->total ?? $order->total_price, 2) }}
+                </p>
 
-      <div class="text-right">
+                {{-- STATUS --}}
+                @if($status == 'completed')
+                    <span class="text-green-600 text-sm font-medium">
+                        Delivered
+                    </span>
+                @elseif($status == 'cancelled')
+                    <span class="text-red-500 text-sm font-medium">
+                        Cancelled
+                    </span>
+                @else
+                    <span class="text-yellow-500 text-sm font-medium">
+                        Pending
+                    </span>
+                @endif
 
-        <p class="font-semibold text-lg">
-          £4,999
-        </p>
+                <!-- BUTTON -->
+                <div class="mt-2">
+                    <a href="/orders/{{ $order->id }}"
+                       class="text-blue-600 text-sm font-medium hover:underline">
+                        View Details →
+                    </a>
+                </div>
 
-        <span class="text-green-600 text-sm font-medium">
-          Delivered
-        </span>
+            </div>
 
-      </div>
+        </div>
 
-    </div>
-
-
-    <!-- Order 2 -->
-
-    <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
-
-      <div>
-
-        <h3 class="font-semibold text-lg">
-          Batting Gloves
-        </h3>
-
-        <p class="text-gray-500 text-sm">
-          #ORD-002 • Mar 5
-        </p>
-
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="font-semibold text-lg">
-          £1,299
-        </p>
-
-        <span class="text-yellow-500 text-sm font-medium">
-          Shipped
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <!-- Order 3 -->
-
-    <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
-
-      <div>
-
-        <h3 class="font-semibold text-lg">
-          Cricket Helmet
-        </h3>
-
-        <p class="text-gray-500 text-sm">
-          #ORD-003 • Feb 28
-        </p>
-
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="font-semibold text-lg">
-          £3,499
-        </p>
-
-        <span class="text-green-600 text-sm font-medium">
-          Delivered
-        </span>
-
-      </div>
+        @endforeach
 
     </div>
 
-
-    <!-- Order 4 -->
-
-    <div class="bg-white p-6 rounded-xl shadow flex justify-between items-center">
-
-      <div>
-
-        <h3 class="font-semibold text-lg">
-          Training Jersey
-        </h3>
-
-        <p class="text-gray-500 text-sm">
-          #ORD-004 • Feb 20
-        </p>
-
-      </div>
-
-
-      <div class="text-right">
-
-        <p class="font-semibold text-lg">
-          £999
-        </p>
-
-        <span class="text-green-600 text-sm font-medium">
-          Delivered
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
+    @endif
 
 </div>
 

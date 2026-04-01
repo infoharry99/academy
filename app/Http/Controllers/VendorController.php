@@ -16,8 +16,72 @@ use App\Models\StatValue;
 use App\Models\StudentFitness;
 use App\Models\StudentAttendance;
 
+use App\Models\Payment;
+use App\Models\Category;
+
 class VendorController extends Controller
 {
+
+
+
+  public function dashboard()
+{
+    if (!Session::has('vendor_id')) {
+        return redirect('/vendor/login');
+    }
+
+    $vendorId = Session::get('vendor_id');
+
+    // ✅ COUNTS
+    $totalProducts = Product::where('vendor_id', $vendorId)->count();
+    $totalCourses = Course::where('vendor_id', $vendorId)->count();
+
+    // ✅ ORDER COUNT
+    $productIds = Product::where('vendor_id', $vendorId)->pluck('id');
+    $courseIds = Course::where('vendor_id', $vendorId)->pluck('id');
+
+    $totalOrders = OrderItem::where(function ($q) use ($productIds, $courseIds) {
+        $q->where(function ($q2) use ($productIds) {
+            $q2->where('type', 'training')
+               ->whereIn('item_id', $productIds);
+        })
+        ->orWhere(function ($q2) use ($courseIds) {
+            $q2->where('type', 'course')
+               ->whereIn('item_id', $courseIds);
+        });
+    })->count();
+
+    // ✅ EARNINGS
+    $totalEarnings = Payment::where('vendor_id', $vendorId)->sum('amount');
+
+    // ✅ MONTHLY ORDERS (🔥 FIX)
+    $monthlyOrders = Payment::where('vendor_id', $vendorId)
+        ->selectRaw('MONTH(created_at) as month, COUNT(*) as total')
+        ->groupBy('month')
+        ->pluck('total', 'month');
+
+    // ✅ MONTHLY EARNINGS (🔥 FIX)
+    $monthlyEarnings = Payment::where('vendor_id', $vendorId)
+        ->selectRaw('MONTH(created_at) as month, SUM(amount) as total')
+        ->groupBy('month')
+        ->pluck('total', 'month');
+
+    // ✅ RECENT TRANSACTIONS
+    $recentOrders = Payment::where('vendor_id', $vendorId)
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return view('vendor.dashboard', compact(
+        'totalProducts',
+        'totalCourses',
+        'totalOrders',
+        'totalEarnings',
+        'monthlyOrders',     // 🔥 IMPORTANT
+        'monthlyEarnings',   // 🔥 IMPORTANT
+        'recentOrders'
+    ));
+}
 
     public function chat()
     {
@@ -47,10 +111,10 @@ class VendorController extends Controller
         ]);
 
         $user = User::create([
-            'name'=>$req->name,
-            'email'=>$req->email,
-            'trainer_id'=>$vendor->id,
-            'password'=>bcrypt($req->password)
+            'name' => $req->name,
+            'email' => $req->email,
+            'trainer_id' => $vendor->id,
+            'password' => bcrypt($req->password)
         ]);
 
         $vendor->user_id = $user->id;
@@ -82,55 +146,7 @@ class VendorController extends Controller
     }
 
     // ✅ Dashboard
-    public function dashboard()
-    {
-        if (!Session::has('vendor_id')) {
-            return redirect('/vendor/login');
-        }
 
-        $vendorId = Session::get('vendor_id');
-        $type = Session::get('vendor_type');
-
-        if ($type == 'training') {
-
-            $totalProducts = Product::where('vendor_id', $vendorId)->count();
-
-            $productIds = Product::where('vendor_id', $vendorId)->pluck('id');
-
-            $totalOrders = OrderItem::where('type', 'training')
-                ->whereIn('item_id', $productIds)
-                ->count();
-
-            $totalCategories = \App\Models\Category::where('type', 'product')->count();
-
-            return view('vendor.dashboard', compact(
-                'type',
-                'totalProducts',
-                'totalOrders',
-                'totalCategories'
-            ));
-        }
-
-        if ($type == 'course') {
-
-            $totalCourses = Course::where('vendor_id', $vendorId)->count();
-
-            $courseIds = Course::where('vendor_id', $vendorId)->pluck('id');
-
-            $totalOrders = OrderItem::where('type', 'course')
-                ->whereIn('item_id', $courseIds)
-                ->count();
-
-            $totalCategories = \App\Models\Category::where('type', 'course')->count();
-
-            return view('vendor.dashboard', compact(
-                'type',
-                'totalCourses',
-                'totalOrders',
-                'totalCategories'
-            ));
-        }
-    }
 
     // ✅ Logout
     public function logout()
@@ -148,9 +164,9 @@ class VendorController extends Controller
         $productIds = Product::where('vendor_id', $vendorId)->pluck('id');
 
         $orders = OrderItem::with(['order.user'])
-                ->where('type', 'training')
-                ->whereIn('item_id', $productIds)
-                ->get();
+            ->where('type', 'training')
+            ->whereIn('item_id', $productIds)
+            ->get();
 
         return view('vendor.training.orders', compact('orders'));
     }
@@ -164,11 +180,11 @@ class VendorController extends Controller
 
         // sirf us vendor ke course orders
         $orders = OrderItem::with(['order', 'order.user', 'course'])
-                    ->where('type', 'course')
-                    ->whereIn('item_id', $courseIds)
-                    ->get();
+            ->where('type', 'course')
+            ->whereIn('item_id', $courseIds)
+            ->get();
 
-     
+
         return view('vendor.course.orders', compact('orders'));
     }
 
@@ -193,7 +209,7 @@ class VendorController extends Controller
         $fields = StatField::where('category_id', $categoryId)->get();
 
         return view('trainer.stats.create', compact('fields', 'categoryId'));
-    }   
+    }
 
     // Store data
 
@@ -228,7 +244,7 @@ class VendorController extends Controller
 
         return back()->with('success', 'Saved!');
     }
-    
+
     public function profile()
     {
         if (!Session::has('vendor_id')) {
@@ -240,40 +256,40 @@ class VendorController extends Controller
 
         $vendor = Vendor::find($vendorId);
 
-        if($type == 'training'){
+        if ($type == 'training') {
 
             // PRODUCTS COUNT
-            $vendor->products_count = Product::where('vendor_id',$vendorId)->count();
+            $vendor->products_count = Product::where('vendor_id', $vendorId)->count();
 
             // PRODUCT IDS
-            $productIds = Product::where('vendor_id',$vendorId)->pluck('id');
+            $productIds = Product::where('vendor_id', $vendorId)->pluck('id');
 
             // ORDERS COUNT
-            $vendor->orders_count = OrderItem::where('type','training')
-                ->whereIn('item_id',$productIds)
+            $vendor->orders_count = OrderItem::where('type', 'training')
+                ->whereIn('item_id', $productIds)
                 ->count();
 
             // REVENUE
-            $vendor->total_revenue = OrderItem::where('type','training')
-                ->whereIn('item_id',$productIds)
+            $vendor->total_revenue = OrderItem::where('type', 'training')
+                ->whereIn('item_id', $productIds)
                 ->sum('price'); // 👈 ensure price column exists
 
         } else {
 
             // COURSES COUNT
-            $vendor->products_count = Course::where('vendor_id',$vendorId)->count();
+            $vendor->products_count = Course::where('vendor_id', $vendorId)->count();
 
             // COURSE IDS
-            $courseIds = Course::where('vendor_id',$vendorId)->pluck('id');
+            $courseIds = Course::where('vendor_id', $vendorId)->pluck('id');
 
             // ORDERS COUNT
-            $vendor->orders_count = OrderItem::where('type','course')
-                ->whereIn('item_id',$courseIds)
+            $vendor->orders_count = OrderItem::where('type', 'course')
+                ->whereIn('item_id', $courseIds)
                 ->count();
 
             // REVENUE
-            $vendor->total_revenue = OrderItem::where('type','course')
-                ->whereIn('item_id',$courseIds)
+            $vendor->total_revenue = OrderItem::where('type', 'course')
+                ->whereIn('item_id', $courseIds)
                 ->sum('price');
         }
 

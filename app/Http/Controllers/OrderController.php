@@ -14,76 +14,90 @@ use App\Models\AttendanceRecord;
 use App\Models\StudentAttendance;
 use App\Models\StatCategory;
 use App\Models\StatValue;
+use App\Models\Payment;
+use Illuminate\Support\Str;
 
 class OrderController extends Controller
 {
-  
 
-    public function placeOrder()
-    {
-        $cart = Cart::where('user_id', auth()->id())->get();
 
-        $total = 0;
+   public function placeOrder()
+{
+    $cart = Cart::where('user_id', auth()->id())->get();
 
-        foreach ($cart as $c) {
+    $total = 0;
 
-            if ($c->type == 'training') {
-                $item = Product::find($c->item_id);
-            } else {
-                $item = Course::find($c->item_id);
-            }
+    foreach ($cart as $c) {
 
-            if (!$item) continue;
-
-            // SALE PRICE LOGIC
-            $price = $item->sale_price ?? $item->price;
-
-            $total += $price * $c->qty;
+        if ($c->type == 'training') {
+            $item = Product::find($c->item_id);
+        } else {
+            $item = Course::find($c->item_id);
         }
 
-        $order = Order::create([
-            'user_id' => auth()->id(),
-            'total' => $total
-        ]);
+        if (!$item) continue;
 
-        foreach ($cart as $c) {
+        $price = $item->sale_price ?? $item->price;
 
-            if ($c->type == 'training') {
-                $item = Product::find($c->item_id);
-            } else {
-                $item = Course::find($c->item_id);
-            }
-
-            if (!$item) continue;
-
-            $price = $item->sale_price ?? $item->price;
-
-            OrderItem::create([
-                'order_id' => $order->id,
-                'type' => $c->type,
-                'item_id' => $c->item_id,
-                'price' => $price,
-                'qty' => $c->qty
-            ]);
-        }
-
-        Cart::where('user_id', auth()->id())->delete();
-
-        return redirect('/my-orders');
+        $total += $price * $c->qty;
     }
+
+    $order = Order::create([
+        'user_id' => auth()->id(),
+        'total' => $total
+    ]);
+
+    // 🔥 IMPORTANT: हर vendor के लिए अलग payment
+    foreach ($cart as $c) {
+
+    if ($c->type == 'training') {
+        $item = Product::find($c->item_id);
+    } else {
+        $item = Course::find($c->item_id);
+    }
+
+    if (!$item) continue;
+
+    $price = $item->sale_price ?? $item->price;
+
+    // 🔥 PAYMENT CREATE WITH VENDOR
+    Payment::create([
+        'user_id' => auth()->id(),
+        'vendor_id' => $item->vendor_id, // ✅ MAIN FIX
+        'order_id' => $order->id,
+        'transaction_id' => 'TXN' . rand(1000, 9999),
+        'type' => $c->type,
+        'amount' => $price * $c->qty,
+        'method' => 'card',
+        'status' => 'completed'
+    ]);
+
+    OrderItem::create([
+        'order_id' => $order->id,
+        'type' => $c->type,
+        'item_id' => $c->item_id,
+        'price' => $price,
+        'qty' => $c->qty
+    ]);
+}
+
+    Cart::where('user_id', auth()->id())->delete();
+
+    return redirect('/orders');
+}
     public function myOrders()
     {
-        $orders = Order::with('items')->where('user_id',auth()->id())->get();
-        
-        return view('orders',compact('orders'));
+        $orders = Order::with('items')->where('user_id', auth()->id())->get();
+
+        return view('dashboard.orders', compact('orders'));
     }
     public function orderDetail($id)
     {
         $order = Order::where('user_id', auth()->id())
-                    ->with('items')
-                    ->findOrFail($id);
-          
-        
+            ->with('items')
+            ->findOrFail($id);
+
+
         return view('order-detail', compact('order'));
     }
 
@@ -126,7 +140,7 @@ class OrderController extends Controller
         $fitness = StudentFitness::where('user_id', auth()->id())
             ->where('course_id', $courseId)
             ->first();
-        
+
         $fitnessData = $fitness ? [
             $fitness->speed,
             $fitness->stamina,
@@ -134,7 +148,7 @@ class OrderController extends Controller
             $fitness->agility,
             $fitness->flexibility,
             $fitness->endurance
-        ] : [0,0,0,0,0,0];
+        ] : [0, 0, 0, 0, 0, 0];
 
         // ATTENDANCE
         $attendance = AttendanceRecord::where('user_id', auth()->id())
@@ -142,14 +156,14 @@ class OrderController extends Controller
             ->orderBy('week')
             ->get();
 
-            // dd($attendance);
+        // dd($attendance);
         // Prepare graph data
         $chartLabels = [];
         $chartData = [];
 
         foreach ($fields as $field) {
             $chartLabels[] = $field->name;
-            $chartData[] = isset($values[$field->id]) ? (float)$values[$field->id] : 0;
+            $chartData[] = isset($values[$field->id]) ? (float) $values[$field->id] : 0;
         }
 
         $attendanceLabels = [];

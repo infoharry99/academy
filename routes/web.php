@@ -18,6 +18,7 @@ use App\Http\Controllers\TrainerStatsController;
 use App\Http\Controllers\StudentStatsController;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\BroadcastController;
+use App\Http\Controllers\PaymentController;
 
 
 Route::get('/matches', function () {
@@ -32,16 +33,17 @@ Route::get('/rankings', function () {
 })->name('rankings');
 
 
-Route::get('/orders', function () {
-    return view('dashboard.orders');
-})->name('orders');
+// Route::get('/orders', function () {
+//     return view('dashboard.orders');
+// })->name('orders');
+Route::get('/orders', [OrderController::class, 'myOrders'])->name('orders');
+
 
 Route::get('/profiles', function () {
     return view('dashboard.profile');
 })->name('profiles');
-Route::get('/payments', function () {
-    return view('dashboard.payments');
-})->name('payments');
+
+Route::get('/payments', [PaymentController::class, 'index'])->name('payments');
 
 Route::get('/broadcast',  [BroadcastController::class, 'userindex'])->name('broadcast');
 
@@ -153,6 +155,10 @@ Route::get('/vendor/userlist', function () {
     return view('vendor.userlist');
 })->name('userlist');
 
+Route::get('/vendor/userlist', [PaymentController::class, 'userList'])->name('vendor.users');
+// Route::get('/vendor/dashboard', [PaymentController::class, 'vendorDashboard'])
+//     ->name('vendor.dashboard');
+
 // Route::get('/vendor/bordcast', function () {
 //     return view('vendor.bordcast');
 // })->name('bordcast');
@@ -169,9 +175,8 @@ Route::get('/vendor/coach', function () {
     return view('vendor.coach');
 })->name('coach');
 
-Route::get('/vendor/transactiondetails', function () {
-    return view('vendor.transactiondetails');
-})->name('transactiondetails');
+Route::get('/vendor/transactiondetails', [PaymentController::class, 'indexVendor']);
+
 
 Route::get('/vendor/profile', [VendorController::class, 'profile']);
 Route::get('/vendor/register',[VendorController::class,'registerForm']);
@@ -221,7 +226,6 @@ Route::get('/cart',[CartController::class,'index']);
 Route::get('/cart/add/{type}/{id}',[CartController::class,'add']);
 
 Route::get('/place-order',[OrderController::class,'placeOrder']);
-Route::get('/my-orders',[OrderController::class,'myOrders']);
 
 Route::get('/vendor/category', [CategoryController::class, 'index']);
 

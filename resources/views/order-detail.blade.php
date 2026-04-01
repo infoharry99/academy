@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('dashboard.layouts.app')
 
 @section('content')
 
@@ -80,7 +80,7 @@
     </div>
 
     <!-- BACK -->
-    <a href="/my-orders"
+    <a href="/orders"
        style="display:inline-block;margin-top:20px;color:#1a6fd4">
        ← Back to Orders
     </a>
