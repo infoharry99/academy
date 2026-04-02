@@ -92,6 +92,15 @@ class VendorController extends Controller
         return view('vendor.chat', compact('allusers'));
     }
 
+    public function userList()
+    {
+        $trainerId = session('vendor_id') ?? auth()->id();
+
+        $users = User::where('trainer_id', $trainerId)->get();
+
+        return view('vendor.userlist', compact('users'));
+    }
+
     // ✅ Register Form
     public function registerForm()
     {

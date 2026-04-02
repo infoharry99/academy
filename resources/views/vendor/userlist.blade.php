@@ -5,11 +5,6 @@
 @section('content')
 
     <div class="space-y-6">
-
-       
-
-
-        <!-- SEARCH + FILTER -->
         <div
             class="bg-white p-4 rounded-xl border shadow-sm flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
 
@@ -39,7 +34,6 @@
                         <th class="p-4 text-left">Phone</th>
                         <th class="p-4 text-left">Status</th>
                         <th class="p-4 text-left">Joined</th>
-                        {{-- <th class="p-4 text-left">Action</th> --}}
                     </tr>
                 </thead>
 

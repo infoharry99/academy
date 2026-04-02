@@ -151,10 +151,7 @@ Route::get('/vendor/performance', function () {
     return view('vendor.perfomance');
 })->name('performance');
 
-Route::get('/vendor/userlist', function () {
-    return view('vendor.userlist');
-})->name('userlist');
-
+Route::get('/vendor/userlist', [VendorController::class, 'userList'])->name('vendor.userlist');
 Route::get('/vendor/userlist', [PaymentController::class, 'userList'])->name('vendor.users');
 // Route::get('/vendor/dashboard', [PaymentController::class, 'vendorDashboard'])
 //     ->name('vendor.dashboard');
