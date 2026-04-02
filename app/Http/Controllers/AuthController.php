@@ -114,4 +114,29 @@ public function profile()
 
         return back()->with('success', 'Profile updated successfully');
     }
+
+
+    public function updateRank(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'rank' => 'required|integer|min:1'
+        ]);
+
+        $user = \App\Models\User::findOrFail($request->user_id);
+
+        $user->update([
+            'rank' => $request->rank
+        ]);
+
+        return back()->with('success', 'Rank updated successfully');
+    }
+
+    public function rankings()
+    {
+        $users = User::whereNotNull('trainer_id')->whereNotNull('rank')->orderBy('rank', 'asc') // or order by rating
+                    ->get();
+
+        return view('dashboard.rankings', compact('users'));
+    }
 }

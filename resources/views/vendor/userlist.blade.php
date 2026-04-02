@@ -32,6 +32,7 @@
                         <th class="p-4 text-left">Phone</th>
                         <th class="p-4 text-left">Status</th>
                         <th class="p-4 text-left">Joined</th>
+                        <th class="p-4 text-left">Action</th>
                     </tr>
                 </thead>
 
@@ -62,6 +63,18 @@
                             <td class="p-4">
                                 {{ $user->created_at->format('d M Y') }}
                             </td>
+                            <td class="p-4">
+                                <button 
+                                    onclick="openModal({{ $user->id }}, '{{ $user->name }}')" 
+                                    class="bg-blue-600 text-white px-3 py-1 rounded text-xs">
+                                    Add Feedback
+                                </button>
+                                <button 
+                                    onclick="openRankModal({{ $user->id }}, '{{ $user->name }}', '{{ $user->rank }}')" 
+                                    class="bg-yellow-500 text-white px-3 py-1 rounded text-xs">
+                                    Add Rank
+                                </button>
+                            </td>
 
                         </tr>
 
@@ -89,5 +102,124 @@
         </div>
 
     </div>
+
+
+
+<!-- RANK MODAL -->
+<div id="rankModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+
+    <div class="bg-white w-full max-w-md rounded-xl p-6 relative">
+
+        <button onclick="closeRankModal()" class="absolute top-3 right-3">✖</button>
+
+        <h2 class="text-xl font-semibold mb-4">
+            Update Rank for <span id="rankUserName"></span>
+        </h2>
+
+        <form method="POST" action="{{ url('/vendor/update-rank') }}">
+            @csrf
+
+            <input type="hidden" name="user_id" id="rankUserId">
+
+            <input type="number" name="rank" id="rankValue"
+                   placeholder="Enter Rank"
+                   class="w-full border p-2 rounded mb-4" required>
+
+            <button class="bg-green-600 text-white px-4 py-2 rounded w-full">
+                Save Rank
+            </button>
+
+        </form>
+
+    </div>
+</div>    
+
+
+    <!-- FEEDBACK MODAL -->
+<div id="feedbackModal" class="fixed inset-0 bg-black bg-opacity-40 hidden items-center justify-center z-50">
+
+    <div class="bg-white w-full max-w-lg rounded-xl p-6 relative">
+
+        <!-- Close -->
+        <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-500">✖</button>
+
+        <h2 class="text-xl font-semibold mb-4">
+            Add Feedback for <span id="userName"></span>
+        </h2>
+
+        <form method="POST" action="{{ url('/vendor/feedback/store') }}">
+            @csrf
+
+            <input type="hidden" name="user_id" id="userId">
+
+            <!-- Star -->
+            <label class="block mb-1 font-medium">Rating ⭐</label>
+            <select name="star" class="w-full border p-2 rounded mb-3">
+                <option value="5">5 ⭐</option>
+                <option value="4">4 ⭐</option>
+                <option value="3">3 ⭐</option>
+                <option value="2">2 ⭐</option>
+                <option value="1">1 ⭐</option>
+            </select>
+
+            <!-- Skill -->
+            <input type="number" name="skill" placeholder="Skill (0-10)" max="10"
+                class="w-full border p-2 rounded mb-2" required>
+
+            <!-- Discipline -->
+            <input type="number" name="discipline" placeholder="Discipline (0-10)" max="10"
+                class="w-full border p-2 rounded mb-2" required>
+
+            <!-- Fitness -->
+            <input type="number" name="fitness" placeholder="Fitness (0-10)" max="10"
+                class="w-full border p-2 rounded mb-2" required>
+
+            <!-- Match -->
+            <input type="number" name="match_performance" placeholder="Match Performance (0-10)" max="10"
+                class="w-full border p-2 rounded mb-2" required>
+
+            <!-- Comment -->
+            <textarea name="comment" placeholder="Write feedback..."
+                class="w-full border p-2 rounded mb-3"></textarea>
+
+            <button class="bg-green-600 text-white px-4 py-2 rounded w-full">
+                Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+function openRankModal(userId, userName, rank) {
+    document.getElementById('rankModal').classList.remove('hidden');
+    document.getElementById('rankModal').classList.add('flex');
+
+    document.getElementById('rankUserId').value = userId;
+    document.getElementById('rankUserName').innerText = userName;
+    document.getElementById('rankValue').value = rank ?? '';
+}
+
+function closeRankModal() {
+    document.getElementById('rankModal').classList.add('hidden');
+    document.getElementById('rankModal').classList.remove('flex');
+}
+</script>
+
+<script>
+function openModal(userId, userName) {
+    document.getElementById('feedbackModal').classList.remove('hidden');
+    document.getElementById('feedbackModal').classList.add('flex');
+
+    document.getElementById('userId').value = userId;
+    document.getElementById('userName').innerText = userName;
+}
+
+function closeModal() {
+    document.getElementById('feedbackModal').classList.add('hidden');
+    document.getElementById('feedbackModal').classList.remove('flex');
+}
+</script>
 
 @endsection

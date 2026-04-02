@@ -2,6 +2,18 @@
 
 @section('content')
 
+@php
+function calculateRating($user) {
+    $runs = $user->runs ?? 0;
+    $wickets = $user->wickets ?? 0;
+
+    // simple logic (you can customize)
+    $rating = ($runs / 500) + ($wickets * 0.1);
+
+    return round(min($rating, 10), 1);
+}
+@endphp
+
 <div class="max-w-6xl">
 
   <!-- Title -->
@@ -59,7 +71,7 @@
 
       <!-- Body -->
 
-      <tbody class="divide-y">
+      {{-- <tbody class="divide-y">
 
         <!-- Rank 1 -->
 
@@ -307,6 +319,63 @@
           </td>
 
         </tr>
+
+      </tbody> --}}
+      <tbody class="divide-y">
+
+        @forelse($users as $index => $user)
+
+        <tr class="hover:bg-gray-50">
+
+          <!-- Rank -->
+          <td class="p-4">
+            @if($index == 0)
+              🥇
+            @elseif($index == 1)
+              🥈
+            @elseif($index == 2)
+              🥉
+            @else
+              {{ $index + 1 }}
+            @endif
+          </td>
+
+          <!-- Name -->
+          <td class="p-4 font-medium">
+            {{ $user->name }}
+          </td>
+
+          <!-- Role -->
+          <td class="p-4 text-gray-600">
+            {{ $user->batting ?? 'N/A' }}
+          </td>
+
+          <!-- Runs -->
+          <td class="p-4">
+            {{ number_format($user->runs ?? 0) }}
+          </td>
+
+          <!-- Wickets -->
+          <td class="p-4">
+            {{ $user->wickets ?? 0 }}
+          </td>
+
+          <!-- Rating -->
+          <td class="p-4 text-green-600 font-semibold">
+            {{ calculateRating($user) }}
+          </td>
+
+        </tr>
+
+        @empty
+
+        <tr>
+          <td colspan="6" class="text-center p-6 text-gray-500">
+            No players found
+          </td>
+        </tr>
+
+        @endforelse
 
       </tbody>
 

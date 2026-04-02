@@ -331,16 +331,22 @@
           <div class="nav-icon" style="background:#fef3c7">📦</div>
           Training Orders
         </a>
+
         <a href="/stats/create/10/5/13" class="nav-link {{ request()->is('vendor/course/order') ? 'active' : '' }}">
           <div class="nav-icon" style="background:#fef3c7">📦</div>
           Add Performance
+        </a>
+
+        <a href="/vendor/matches" class="nav-link {{ request()->is('vendor/matches') ? 'active' : '' }}">
+          <div class="nav-icon" style="background:#fef3c7">📦</div>
+          Add Matches
         </a>
 
         <a href="/vendor/allusers" class="nav-link {{ request()->is('vendor/allusers*') ? 'active' : '' }}">
           <div class="nav-icon" style="background:#e0f2fe">👤</div>
           All Users
         </a>
-        <a href="/vendor/transactiondetails" class="nav-link {{ request()->is('vendor/transactiondetails*') ? 'active' : '' }}">
+        <a href="/vendor/transactions" class="nav-link {{ request()->is('vendor/transactions*') ? 'active' : '' }}">
           <div class="nav-icon" style="background:#e0f2fe">📦</div>
           Transaction Details
         </a>
@@ -348,7 +354,7 @@
         <div class="nav-icon" style="background:#e0f2fe"> 📊</div>
         Performance
       </a> -->
-      <a href="/vendor/coach" class="nav-link {{ request()->is('vendor/coach*') ? 'active' : '' }}">
+      <a href="/vendor/coaches" class="nav-link {{ request()->is('vendor/coaches*') ? 'active' : '' }}">
         <div class="nav-icon" style="background:#e0f2fe">👤</div>
         Coach
       </a>

@@ -20,19 +20,27 @@ use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CoachController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\MatchController;
+
+// Route::get('/matches', function () {
+//     return view('dashboard.matches');
+// })->name('matches');
+Route::get('/matches', [MatchController::class, 'upcomingMatches'])->name('matches');
+
+// Route::get('/feedback', function () {
+//     return view('dashboard.feedback');
+// })->name('feedback');
+
+Route::get('/feedback', [FeedbackController::class, 'feedbacks'])->name('feedback');
 
 
+// Route::get('/rankings', function () {
+//     return view('dashboard.rankings');
+// })->name('rankings');
 
-Route::get('/matches', function () {
-    return view('dashboard.matches');
-})->name('matches');
-
-Route::get('/feedback', function () {
-    return view('dashboard.feedback');
-})->name('feedback');
-Route::get('/rankings', function () {
-    return view('dashboard.rankings');
-})->name('rankings');
+Route::get('/rankings', [AuthController::class, 'rankings'])->name('rankings');
 
 
 // Route::get('/orders', function () {
@@ -168,17 +176,34 @@ Route::get('/vendor/userlist', [PaymentController::class, 'userList'])->name('ve
 
 
 
+
+Route::prefix('vendor')->group(function () {
+    Route::get('/matches', [MatchController::class, 'index'])->name('vendor.matches.index');
+    Route::get('/matches/create', [MatchController::class, 'create'])->name('vendor.matches.create');
+    Route::post('/matches/store', [MatchController::class, 'store'])->name('vendor.matches.store');
+    Route::get('/matches/{id}/edit', [MatchController::class, 'edit'])->name('vendor.matches.edit');
+    Route::put('/matches/{id}', [MatchController::class, 'update'])->name('vendor.matches.update');
+
+    Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store');
+    Route::post('/update-rank', [AuthController::class, 'updateRank'])->name('update-rank');
+});
+
 // store message
 Route::post('/vendor/bordcast', [BroadcastController::class, 'store']);
 
 // get messages
 Route::get('/vendor/bordcast', [BroadcastController::class, 'index']);
 
-Route::get('/vendor/coach', function () {
-    return view('vendor.coach');
-})->name('coach');
+// Route::get('/vendor/coach', function () {
+//     return view('vendor.coach');
+// })->name('coach');
 
-Route::get('/vendor/transactiondetails', [PaymentController::class, 'indexVendor']);
+Route::get('/vendor/coaches', [CoachController::class, 'index'])->name('vendor.coaches');
+Route::post('/vendor/coaches/store', [CoachController::class, 'store']);
+Route::post('/vendor/coaches/update/{id}', [CoachController::class, 'update']);
+Route::get('/vendor/coaches/{id}', [CoachController::class, 'show']);
+
+Route::get('/vendor/transactions', [PaymentController::class, 'indexVendor']);
 
 
 Route::get('/vendor/profile', [VendorController::class, 'profile']);

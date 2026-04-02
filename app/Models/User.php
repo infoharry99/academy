@@ -39,7 +39,8 @@ class User extends Authenticatable
         'batting',
         'trainer_id',
         'bowling',
-        'academy'
+        'academy',
+        'rank'
     ];
 
     protected $hidden = [
@@ -94,5 +95,12 @@ class User extends Authenticatable
     public function recordedAttendance(): HasMany
     {
         return $this->hasMany(AttendanceRecord::class, 'trainer_id');
+    }
+
+     public function matches()
+    {
+        return $this->belongsToMany(Matches::class, 'user_matches', 'user_id', 'match_id')
+                    ->withPivot('assigned_by')
+                    ->withTimestamps();
     }
 }

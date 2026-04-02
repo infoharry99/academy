@@ -23,9 +23,7 @@ class PaymentController extends Controller
 {
     // 🔥 correct vendor
     $vendor = Vendor::where('user_id', auth()->id())->first();
-    if (!$vendor) {
-        return back()->with('error','Vendor not found');
-    }
+    
 
     $vendorId = $vendor->id;
 
