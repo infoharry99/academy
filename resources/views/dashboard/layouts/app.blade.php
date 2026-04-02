@@ -59,6 +59,14 @@
     @include('dashboard.layouts.sidebar')
 
 
+    @php
+    $userId = auth()->id();
+
+    // ✅ LATEST PERFORMANCE
+    $performance = \App\Models\StudentPerformance::where('user_id', $userId)
+        ->latest()
+        ->first();
+    @endphp
     <!-- MAIN CONTENT -->
 
     <main class="flex-1 p-6 md:p-8  overflow-y-auto">
@@ -104,7 +112,7 @@
           <div class="bg-white p-6 rounded-xl shadow">
 
             <h3 class="text-3xl font-bold">
-              48
+                {{ $performance->total_matches ?? 0 }}
             </h3>
 
             <p class="text-gray-500">
@@ -117,7 +125,7 @@
           <div class="bg-white p-6 rounded-xl shadow">
 
             <h3 class="text-3xl font-bold">
-              2,456
+             {{ $performance->runs ?? 0 }}
             </h3>
 
             <p class="text-gray-500">
@@ -130,7 +138,7 @@
           <div class="bg-white p-6 rounded-xl shadow">
 
             <h3 class="text-3xl font-bold">
-              32
+             {{ $performance->wickets ?? 0 }}
             </h3>
 
             <p class="text-gray-500">
@@ -143,7 +151,7 @@
           <div class="bg-white p-6 rounded-xl shadow">
 
             <h3 class="text-3xl font-bold">
-              8.5
+              {{ $performance->strike_rate ?? 0 }}
             </h3>
 
             <p class="text-gray-500">

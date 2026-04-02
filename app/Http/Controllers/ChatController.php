@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Message;
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\Vendor;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,10 @@ class ChatController extends Controller
     {
         $userId = Auth::user()->id;
 
-        $vendors = Vendor::all();
+        $userIds=Payment::where('user_id', $userId)->pluck('vendor_id');
+        $vendors = Vendor::whereIn('id', $userIds)->get();
+
+        // $vendors = Vendor::all();
 
         return view('dashboard.chat', compact('vendors', 'userId'));
     }
@@ -27,7 +31,7 @@ class ChatController extends Controller
     {
         $vendorId = session('vendor_id');
 
-        $userIds = \App\Models\Order::distinct()->pluck('user_id');
+        $userIds=Payment::where('vendor_id', $vendorId)->pluck('user_id');
         $users = User::whereIn('id', $userIds)->get();
 
         return view('vendor.chat', compact('users', 'vendorId'));

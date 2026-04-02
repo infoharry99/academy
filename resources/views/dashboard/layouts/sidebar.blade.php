@@ -163,7 +163,7 @@
     </a>
 
     <a
-      href="/"
+      href="/logout"
       class="flex items-center gap-3 text-red-400 hover:text-red-500 transition"
     >
     <i class="fa-solid fa-right-from-bracket"></i> Logout

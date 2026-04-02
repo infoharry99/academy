@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Matches;
+use App\Models\Payment;
 use App\Models\User;
 use App\Models\UserMatch;
 
@@ -33,7 +34,9 @@ class MatchController extends Controller
     // 📌 Show create form
     public function create()
     {
-        $users = User::whereNotNull('trainer_id')->get();
+        $trainerId = session('vendor_id') ?? auth()->id();
+        $userIds=Payment::where('vendor_id', $trainerId)->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
         return view('vendor.matches.create', compact('users'));
     }
 
@@ -76,7 +79,10 @@ class MatchController extends Controller
     public function edit($id)
     {
         $match = Matches::findOrFail($id);
-        $users = User::all();
+
+        $trainerId = session('vendor_id') ?? auth()->id();
+        $userIds=Payment::where('vendor_id', $trainerId)->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
 
         // already assigned users
         $assignedUsers = $match->users->pluck('id')->toArray();

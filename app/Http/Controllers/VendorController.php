@@ -51,6 +51,8 @@ class VendorController extends Controller
         });
     })->count();
 
+   
+
     // ✅ EARNINGS
     $totalEarnings = Payment::where('vendor_id', $vendorId)->sum('amount');
 
@@ -87,7 +89,8 @@ class VendorController extends Controller
     {
         $trainerId = session('vendor_id') ?? auth()->id();
 
-        $allusers = User::where('trainer_id', $trainerId)->get();
+        $userIds=Payment::where('vendor_id', $trainerId)->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
 
         return view('vendor.chat', compact('allusers'));
     }
@@ -105,7 +108,10 @@ class VendorController extends Controller
     {
         $trainerId = session('vendor_id') ?? auth()->id();
 
-        $users = User::where('trainer_id', $trainerId)->get();
+        // $users = User::where('trainer_id', $trainerId)->get();
+
+        $userIds=Payment::where('vendor_id', $trainerId)->pluck('user_id');
+        $users = User::whereIn('id', $userIds)->get();
 
         return view('vendor.userlist', compact('users'));
     }

@@ -11,6 +11,14 @@
 
 <body class="bg-gray-100 mb-10">
 
+    @php
+    $userId = auth()->id();
+
+    //  LATEST PERFORMANCE
+    $performance = \App\Models\StudentPerformance::where('user_id', $userId)
+        ->latest()
+        ->first();
+    @endphp
 <!-- HEADER -->
 <div class="h-64 w-full bg-gradient-to-r from-slate-900 to-green-900">
     <div class="max-w-6xl mx-auto pt-6 px-4">
@@ -57,10 +65,10 @@
     </div>
 
     <!-- FIXED BUTTON -->
-    <button onclick="openModal()" 
+    {{-- <button onclick="openModal()" 
         class="mt-6 w-full border py-2 rounded hover:bg-gray-100">
         Edit Profile
-    </button>
+    </button> --}}
 
 </div>
 </div>
@@ -78,37 +86,37 @@ Career <span class="text-yellow-500">Statistics</span>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 🏏
-<h3 class="text-2xl font-bold">{{ auth()->user()->total_matches ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->total_matches ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Matches</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 🏃
-<h3 class="text-2xl font-bold">{{ auth()->user()->runs ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->runs ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Runs</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 🎯
-<h3 class="text-2xl font-bold">{{ auth()->user()->wickets ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->wickets ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Wickets</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 ⚡
-<h3 class="text-2xl font-bold">{{ auth()->user()->strike_rate ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->strike_rate ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Strike Rate</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 📊
-<h3 class="text-2xl font-bold">{{ auth()->user()->batting_average ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->batting_average ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Average</p>
 </div>
 
 <div class="bg-white p-6 rounded-xl shadow text-center">
 ⭐
-<h3 class="text-2xl font-bold">{{ auth()->user()->high_score ?? 0 }}</h3>
+<h3 class="text-2xl font-bold">{{ $performance->high_score ?? 0 }}</h3>
 <p class="text-gray-500 text-sm">Highest</p>
 </div>
 

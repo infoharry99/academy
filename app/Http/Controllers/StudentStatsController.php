@@ -26,6 +26,7 @@ public function dashboard()
     $performance = StudentPerformance::where('user_id', $userId)
         ->latest()
         ->first();
+        
 
     // ✅ LATEST FITNESS
     $fitness = StudentFitness::where('user_id', $userId)

@@ -78,6 +78,11 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
 
                 <label class="flex items-center gap-2 bg-gray-100 p-2 rounded cursor-pointer">
+                    <input type="checkbox" class="channel" value="notification">
+                    🔔 Notification
+                </label>
+
+                <label class="flex items-center gap-2 bg-gray-100 p-2 rounded cursor-pointer">
                     <input type="checkbox" class="channel" value="email">
                     📧 Email
                 </label>
@@ -92,10 +97,7 @@
                     💬 WhatsApp
                 </label>
 
-                <label class="flex items-center gap-2 bg-gray-100 p-2 rounded cursor-pointer">
-                    <input type="checkbox" class="channel" value="notification">
-                    🔔 Notification
-                </label>
+                
 
             </div>
         </div>
