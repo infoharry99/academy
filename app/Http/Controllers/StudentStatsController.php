@@ -16,6 +16,91 @@ use Illuminate\Http\Request;
 
 class StudentStatsController extends Controller
 {
+
+
+public function dashboard()
+{
+    $userId = auth()->id();
+
+    // ✅ LATEST PERFORMANCE
+    $performance = StudentPerformance::where('user_id', $userId)
+        ->latest()
+        ->first();
+
+    // ✅ LATEST FITNESS
+    $fitness = StudentFitness::where('user_id', $userId)
+        ->latest()
+        ->first();
+
+    // ✅ LAST 8 PERFORMANCE RECORDS (FOR GRAPH)
+    $performances = StudentPerformance::where('user_id', $userId)
+        ->latest()
+        ->take(8)
+        ->get()
+        ->reverse();
+
+    // ✅ LAST 8 ATTENDANCE
+    $attendance = StudentAttendance::where('user_id', $userId)
+        ->latest()
+        ->take(8)
+        ->get()
+        ->reverse();
+
+    // =========================
+    // GRAPH DATA
+    // =========================
+
+    $labels = [];
+    $runsData = [];
+    $strikeRateData = [];
+    $wicketsData = [];
+    $economyData = [];
+
+    foreach ($performances as $index => $p) {
+        $labels[] = 'M' . ($index + 1);
+
+        $runsData[] = $p->runs ?? 0;
+        $strikeRateData[] = $p->strike_rate ?? 0;
+
+        $wicketsData[] = $p->wickets ?? 0;
+        $economyData[] = $p->economy ?? 0;
+    }
+
+    // =========================
+    // FITNESS DATA
+    // =========================
+    $fitnessData = [
+        $fitness->speed ?? 0,
+        $fitness->stamina ?? 0,
+        $fitness->strength ?? 0,
+        $fitness->agility ?? 0,
+        $fitness->flexibility ?? 0,
+        $fitness->endurance ?? 0,
+    ];
+
+    // =========================
+    // ATTENDANCE DATA
+    // =========================
+    $attendanceLabels = [];
+    $attendanceData = [];
+
+    foreach ($attendance as $a) {
+        $attendanceLabels[] = 'M' . $a->month;
+        $attendanceData[] = $a->sessions_attended ?? 0;
+    }
+
+    return view('dashboard.index', compact(
+        'performance',
+        'labels',
+        'runsData',
+        'strikeRateData',
+        'wicketsData',
+        'economyData',
+        'fitnessData',
+        'attendanceLabels',
+        'attendanceData'
+    ));
+}
     // SHOW FORM WITH DATA
     public function index($userId)
     {
