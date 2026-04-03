@@ -426,7 +426,7 @@
                     <td>
                         {{ $row->created_at->format('d M Y') }}
                     </td>
-                    <td class="p-4 text-center">
+                    <td class="p-4 text-center flex items-center gap-2">
                       <button 
                           onclick="openModal(this)"
                           data-name="{{ $row->user->name ?? 'Unknown' }}"
@@ -439,6 +439,9 @@
                           
                           👁
                       </button>
+
+                      <a href="{{ route('student.stats.edit', $row->user->id) }}">
+                    <button onclick="" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-blue-600 bg-blue-100 rounded-lg hover:bg-blue-200 transition">📝</button></a>
                   </td>
                 </tr>
 

@@ -338,8 +338,9 @@
   </div>
 
   <!-- FORM -->
-  <form method="POST" action="{{ url('/student-stats/'.$userId) }}">
+ <form method="POST" action="{{ url('/student-stats/update/'.$userId) }}">
     @csrf
+    @method('PUT')
 
     
     <!-- PERFORMANCE -->
@@ -352,102 +353,109 @@
       <div class="card">
         <div class="grid-perf">
 
-          <div class="field">
-            <label>Runs</label>
-            <input type="text" name="runs" id="runs" placeholder="e.g. 3420">
-          </div>
+            <div class="field">
+                <label>Runs</label>
+                <input type="text" name="runs" id="runs"
+                value="{{ $performance->runs ?? '' }}" placeholder="e.g. 3420">
+            </div>
 
-          <div class="field">
-            <label>Balls Faced</label>
-            <input type="text" name="balls_faced" id="balls" placeholder="Balls faced">
-          </div>
+            <div class="field">
+                <label>Balls Faced</label>
+                <input type="text" name="balls_faced" id="balls"
+                value="{{ $performance->balls_faced ?? '' }}" placeholder="Balls faced">
+            </div>
 
+            <div class="field">
+                <label>Total Matches</label>
+                <input type="text" name="total_matches" id="matches"
+                value="{{ $performance->total_matches ?? '' }}" placeholder="e.g. 60">
+            </div>
 
-          <div class="field">
-            <label>Total Matches</label>
-            <input type="text" name="total_matches" id="matches" placeholder="e.g. 60">
-          </div>
+            <div class="field">
+                <label>Batting Average</label>
+                <input type="text" name="batting_average" id="batting_average"
+                value="{{ $performance->batting_average ?? '' }}" readonly placeholder="e.g. 38.6">
+            </div>
 
-          <div class="field">
-            <label>Batting Average</label>
-            <input type="text" name="batting_average" id="batting_average" readonly placeholder="e.g. 38.6">
-          </div>
+            <div class="field">
+                <label>Strike Rate</label>
+                <input type="text" name="strike_rate" id="strike_rate"
+                value="{{ $performance->strike_rate ?? '' }}" readonly placeholder="e.g. 132.4">
+            </div>
 
-          <div class="field">
-            <label>Strike Rate</label>
-            <input type="text" name="strike_rate" id="strike_rate" readonly placeholder="e.g. 132.4">
-          </div>
+            <div class="field">
+                <label>Overs Bowled</label>
+                <input type="text" name="overs_bowled" id="overs"
+                value="{{ $performance->overs_bowled ?? '' }}" placeholder="Overs bowled">
+            </div>
 
-          
+            <div class="field">
+                <label>Runs Conceded</label>
+                <input type="text" name="runs_conceded" id="runs_conceded"
+                value="{{ $performance->runs_conceded ?? '' }}" placeholder="Runs conceded">
+            </div>
 
-          <div class="field">
-            <label>Overs Bowled</label>
-            <input type="text" name="overs_bowled" id="overs" placeholder="Overs bowled">
-          </div>
-          <div class="field">
-            <label>Runs Conceded</label>
-            <input type="text" name="runs_conceded" id="runs_conceded" placeholder="Runs conceded">
-          </div>
-          <div class="field">
-            <label>Wickets</label>
-            <input type="text" name="wickets"  id="wickets" placeholder="e.g. 45">
-          </div>
-          
-          <div class="field">
-            <label>Economy</label>
-            <input type="text" name="economy" id="economy" readonly placeholder="e.g. 7.2">
-          </div>
+            <div class="field">
+                <label>Wickets</label>
+                <input type="text" name="wickets" id="wickets"
+                value="{{ $performance->wickets ?? '' }}" placeholder="e.g. 45">
+            </div>
 
-          
+            <div class="field">
+                <label>Economy</label>
+                <input type="text" name="economy" id="economy"
+                value="{{ $performance->economy ?? '' }}" readonly placeholder="e.g. 7.2">
+            </div>
 
+            <div class="field">
+                <label>High Score</label>
+                <input type="text" name="high_score"
+                value="{{ $performance->high_score ?? '' }}" placeholder="e.g. 148*">
+            </div>
 
-          
+            <div class="field">
+                <label>Centuries</label>
+                <input type="text" name="centuries"
+                value="{{ $performance->centuries ?? '' }}" placeholder="e.g. 4">
+            </div>
 
-          
+            <div class="field">
+                <label>Half Centuries</label>
+                <input type="text" name="half_centuries"
+                value="{{ $performance->half_centuries ?? '' }}" placeholder="e.g. 12">
+            </div>
 
-          <div class="field">
-            <label>High Score</label>
-            <input type="text" name="high_score" placeholder="e.g. 148*">
-          </div>
+            <div class="field">
+                <label>Catches</label>
+                <input type="text" name="catches"
+                value="{{ $performance->catches ?? '' }}" placeholder="e.g. 18">
+            </div>
 
-          <div class="field">
-            <label>Centuries</label>
-            <input type="text" name="centuries" placeholder="e.g. 4">
-          </div>
+            <div class="field">
+                <label>Best Bowling</label>
+                <input type="text" name="best_bowling"
+                value="{{ $performance->best_bowling ?? '' }}" placeholder="e.g. 5/22">
+            </div>
 
-          <div class="field">
-            <label>Half Centuries</label>
-            <input type="text" name="half_centuries" placeholder="e.g. 12">
-          </div>
+            <div class="field">
+                <label>Age</label>
+                <input type="text" name="age"
+                value="{{ $performance->age ?? '' }}" readonly>
+            </div>
 
-          <div class="field">
-            <label>Catches</label>
-            <input type="text" name="catches" placeholder="e.g. 18">
-          </div>
+            <div class="field">
+                <label>Batting Style</label>
+                <input type="text" name="batting_style"
+                value="{{ $performance->batting_style ?? '' }}" placeholder="e.g. Right-hand">
+            </div>
 
-          <div class="field">
-            <label>Best Bowling</label>
-            <input type="text" name="best_bowling" placeholder="e.g. 5/22">
-          </div>
+            <div class="field">
+                <label>Bowling Style</label>
+                <input type="text" name="bowling_style"
+                value="{{ $performance->bowling_style ?? '' }}" placeholder="e.g. Off-spin">
+            </div>
 
-          <div class="field">
-            <label>Age</label>
-            <input type="text" name="age" value="{{$age}}" readonly placeholder="e.g. 22">
-          </div>
-
-          <div class="field">
-            <label>Batting Style</label>
-            <input type="text" name="batting_style" placeholder="e.g. Right-hand">
-          </div>
-
-          <div class="field">
-            <label>Bowling Style</label>
-            <input type="text" name="bowling_style" placeholder="e.g. Off-spin">
-          </div>
-
-            <!-- <label>Academy</label> -->
-            <input type="hidden" name="academy" value="Academy name" placeholder="Academy name">
-
+            <input type="hidden" name="academy" value="{{ $performance->academy ?? '' }}">
 
         </div>
       </div>
@@ -463,41 +471,59 @@
       <div class="card">
         <div class="grid-fitness">
 
-          <div class="field">
-            <label>Speed <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="speed" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Speed <span class="month-hint">0–100</span></label>
+                <input type="number" name="speed" min="0" max="100"
+                value="{{ $fitness->speed ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->speed ?? 0 }}%"></div>
+                </div>
+            </div>
 
-          <div class="field">
-            <label>Stamina <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="stamina" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Stamina <span class="month-hint">0–100</span></label>
+                <input type="number" name="stamina" min="0" max="100"
+                value="{{ $fitness->stamina ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->stamina ?? 0 }}%"></div>
+                </div>
+            </div>
 
-          <div class="field">
-            <label>Strength <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="strength" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Strength <span class="month-hint">0–100</span></label>
+                <input type="number" name="strength" min="0" max="100"
+                value="{{ $fitness->strength ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->strength ?? 0 }}%"></div>
+                </div>
+            </div>
 
-          <div class="field">
-            <label>Agility <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="agility" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Agility <span class="month-hint">0–100</span></label>
+                <input type="number" name="agility" min="0" max="100"
+                value="{{ $fitness->agility ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->agility ?? 0 }}%"></div>
+                </div>
+            </div>
 
-          <div class="field">
-            <label>Flexibility <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="flexibility" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Flexibility <span class="month-hint">0–100</span></label>
+                <input type="number" name="flexibility" min="0" max="100"
+                value="{{ $fitness->flexibility ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->flexibility ?? 0 }}%"></div>
+                </div>
+            </div>
 
-          <div class="field">
-            <label>Endurance <span style="color:var(--text-faint);font-size:10px;text-transform:none;letter-spacing:0;">0–100</span></label>
-            <input type="number" name="endurance" min="0" max="100" placeholder="0" oninput="updateBar(this)">
-            <div class="fitness-track"><div class="fitness-fill"></div></div>
-          </div>
+            <div class="field">
+                <label>Endurance <span class="month-hint">0–100</span></label>
+                <input type="number" name="endurance" min="0" max="100"
+                value="{{ $fitness->endurance ?? '' }}" oninput="updateBar(this)">
+                <div class="fitness-track">
+                <div class="fitness-fill" style="width: {{ $fitness->endurance ?? 0 }}%"></div>
+                </div>
+            </div>
 
         </div>
       </div>
@@ -515,44 +541,12 @@
 
           <div class="field">
             <label>Current Month <span class="month-hint">{{ date('F') }}</span></label>
-            <input type="number" name="attendance[1]" placeholder="Sessions" min="0">
+            <input type="number" name="attendance[1]" value="{{ $attendance[1]->sessions_attended ?? '' }}">
           </div>
 
-          {{-- <div class="field">
-            <label>Month 2 <span class="month-hint">Feb</span></label>
-            <input type="number" name="attendance[2]" placeholder="Sessions" min="0">
-          </div>
 
-          <div class="field">
-            <label>Month 3 <span class="month-hint">Mar</span></label>
-            <input type="number" name="attendance[3]" placeholder="Sessions" min="0">
-          </div>
-
-          <div class="field">
-            <label>Month 4 <span class="month-hint">Apr</span></label>
-            <input type="number" name="attendance[4]" placeholder="Sessions" min="0">
-          </div>
-
-          <div class="field">
-            <label>Month 5 <span class="month-hint">May</span></label>
-            <input type="number" name="attendance[5]" placeholder="Sessions" min="0">
-          </div>
-
-          <div class="field">
-            <label>Month 6 <span class="month-hint">Jun</span></label>
-            <input type="number" name="attendance[6]" placeholder="Sessions" min="0">
-          </div>
-
-          <div class="field">
-            <label>Month 7 <span class="month-hint">Jul</span></label>
-            <input type="number" name="attendance[7]" placeholder="Sessions" min="0">
-          </div>
-
-          <div class="field">
-            <label>Month 8 <span class="month-hint">Aug</span></label>
-            <input type="number" name="attendance[8]" placeholder="Sessions" min="0">
-          </div> --}}
-
+          
+         
         </div>
       </div>
     </div>
@@ -560,7 +554,7 @@
     <!-- ACTIONS -->
     <div class="section">
       <div class="actions">
-        <a href="#" class="btn btn-ghost">Cancel</a>
+        <a href="{{ route('student.stats.list', $userId) }}" class="btn btn-ghost">Cancel</a>
         <button type="submit" class="btn btn-primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
             <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

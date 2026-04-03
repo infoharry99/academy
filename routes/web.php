@@ -116,7 +116,13 @@ Route::get(
 
 Route::get('/student-stats/{userId}', [StudentStatsController::class, 'index']);
 Route::post('/student-stats/{userId}', [StudentStatsController::class, 'save']);
-Route::get('/student-stats/list/{userId}', [StudentStatsController::class, 'list']);
+Route::get('/student-stats/list/{userId}', [StudentStatsController::class, 'list'])->name('student.stats.list');
+
+// routes/web.php
+
+Route::get('/student-stats/edit/{userId}', [StudentStatsController::class, 'edit'])->name('student.stats.edit');
+Route::put('/student-stats/update/{userId}', [StudentStatsController::class, 'update']);
+
 // Store stats
 Route::post(
     '/stats/store',

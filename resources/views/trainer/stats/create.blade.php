@@ -73,13 +73,29 @@
                             <a href="{{ url('/student-stats/'.$user->id) }}" class="btn btn-primary">Enter Stats</a>
                             <a href="{{ url('/student-stats/list/'.$user->id) }}" class="btn btn-secondary">Stats List</a>      
                         </div> --}}
+                        @php
+                            $hasCurrentMonthData = $user->performance()
+                                ->whereMonth('created_at', now()->month)
+                                ->whereYear('created_at', now()->year)
+                                ->exists();
+                        @endphp
 
                         <div class="flex items-center gap-3">
 
-                            <a href="{{ url('/student-stats/'.$user->id) }}"
+                            {{-- <a href="{{ url('/student-stats/'.$user->id) }}"
                             class="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg shadow hover:bg-blue-700 transition duration-200">
                                 📊 Add Performance
-                            </a>
+                            </a> --}}
+                            @if($hasCurrentMonthData)
+                                <button disabled class="px-4 py-2 bg-gray-300 text-gray-600 rounded-lg cursor-not-allowed">
+                                    ✅ Already Added
+                                </button>
+                            @else
+                                <a href="{{ url('/student-stats/'.$user->id) }}"
+                                class="px-4 py-2 bg-blue-600 text-white rounded-lg">
+                                    📊 Add Performance
+                                </a>
+                            @endif
 
                             <a href="{{ url('/student-stats/list/'.$user->id) }}"
                             class="px-4 py-2 bg-gray-200 text-gray-800 text-sm font-medium rounded-lg shadow hover:bg-gray-300 transition duration-200">

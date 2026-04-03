@@ -51,6 +51,21 @@
                     <span style="font-size:0.78rem;color:#dc2626;margin-top:4px;display:block">{{ $message }}</span>
                 @enderror
             </div>
+            <div style="margin-bottom:1rem">
+                <label style="display:block;font-size:0.8rem;font-weight:600;color:#4a6890;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px">Email Address</label>
+                <input
+                    name="dob"
+                    type="date"
+                    placeholder="Enter your date of birth"
+                    value="{{ old('dob') }}"
+                    style="width:100%;padding:10px 14px;border:1.5px solid #d0e2f7;border-radius:10px;font-size:0.95rem;color:#0d1f3c;background:#f0f6ff;outline:none;transition:border-color 0.18s;font-family:'DM Sans',sans-serif"
+                    onfocus="this.style.borderColor='#1a6fd4';this.style.background='#fff'"
+                    onblur="this.style.borderColor='#d0e2f7';this.style.background='#f0f6ff'"
+                >
+                @error('dob')
+                    <span style="font-size:0.78rem;color:#dc2626;margin-top:4px;display:block">{{ $message }}</span>
+                @enderror
+            </div>
 
             {{-- Password --}}
             <div style="margin-bottom:1.5rem">

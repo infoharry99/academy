@@ -76,52 +76,158 @@
 <!-- RIGHT -->
 <div class="md:col-span-2 space-y-8">
 
-<!-- STATS -->
-<div>
-<h2 class="text-xl font-semibold mb-4 text-gray-800">
-Career <span class="text-yellow-500">Statistics</span>
-</h2>
+    <!-- STATS -->
+    <div>
+        <h2 class="text-xl font-semibold mb-4 text-gray-800">
+        Career <span class="text-yellow-500">Statistics</span>
+        </h2>
 
-<div class="grid md:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-3 gap-6">
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🏏
-<h3 class="text-2xl font-bold">{{ $performance->total_matches ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Matches</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                🏏
+                <h3 class="text-2xl font-bold">{{ $performance->total_matches ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Matches</p>
+            </div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🏃
-<h3 class="text-2xl font-bold">{{ $performance->runs ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Runs</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                🏃
+                <h3 class="text-2xl font-bold">{{ $performance->runs ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Runs</p>
+            </div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-🎯
-<h3 class="text-2xl font-bold">{{ $performance->wickets ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Wickets</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                🎯
+                <h3 class="text-2xl font-bold">{{ $performance->wickets ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Wickets</p>
+            </div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-⚡
-<h3 class="text-2xl font-bold">{{ $performance->strike_rate ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Strike Rate</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                ⚡
+                <h3 class="text-2xl font-bold">{{ $performance->strike_rate ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Strike Rate</p>
+            </div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-📊
-<h3 class="text-2xl font-bold">{{ $performance->batting_average ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Average</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                📊
+                <h3 class="text-2xl font-bold">{{ $performance->batting_average ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Average</p>
+            </div>
 
-<div class="bg-white p-6 rounded-xl shadow text-center">
-⭐
-<h3 class="text-2xl font-bold">{{ $performance->high_score ?? 0 }}</h3>
-<p class="text-gray-500 text-sm">Highest</p>
-</div>
+            <div class="bg-white p-6 rounded-xl shadow text-center">
+                ⭐
+                <h3 class="text-2xl font-bold">{{ $performance->high_score ?? 0 }}</h3>
+                <p class="text-gray-500 text-sm">Highest</p>
+            </div>
 
-</div>
-</div>
+        </div>
+    </div>
+
+    <!-- Match Highlights -->
+
+        <div>
+
+          <h2 class="text-xl font-semibold mb-4">
+
+            🎬 Match
+            <span class="text-yellow-500">
+              Highlights
+            </span>
+
+          </h2>
+
+
+          <div class="grid md:grid-cols-2 gap-6">
+
+            <div class="bg-white p-4 rounded-xl shadow flex gap-4 items-center">
+
+              <div class="bg-blue-100 p-3 rounded-lg">
+                ▶
+              </div>
+
+              <div>
+
+                <h4 class="font-medium">
+                  Century vs City CC - T20 Final
+                </h4>
+
+                <p class="text-sm text-gray-500">
+                  Video Highlight
+                </p>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="bg-white p-4 rounded-xl shadow flex gap-4 items-center">
+
+              <div class="bg-blue-100 p-3 rounded-lg">
+                ▶
+              </div>
+
+              <div>
+
+                <h4 class="font-medium">
+                  Best Bowling 4/22 vs Strikers
+                </h4>
+
+                <p class="text-sm text-gray-500">
+                  Video Highlight
+                </p>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="bg-white p-4 rounded-xl shadow flex gap-4 items-center">
+
+              <div class="bg-blue-100 p-3 rounded-lg">
+                ▶
+              </div>
+
+              <div>
+
+                <h4 class="font-medium">
+                  Match Winning Knock 89*
+                </h4>
+
+                <p class="text-sm text-gray-500">
+                  Video Highlight
+                </p>
+
+              </div>
+
+            </div>
+
+
+
+            <div class="bg-white p-4 rounded-xl shadow flex gap-4 items-center">
+
+              <div class="bg-blue-100 p-3 rounded-lg">
+                ▶
+              </div>
+
+              <div>
+
+                <h4 class="font-medium">
+                  Fielding Highlights Reel
+                </h4>
+
+                <p class="text-sm text-gray-500">
+                  Video Highlight
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
 </div>
 </div>

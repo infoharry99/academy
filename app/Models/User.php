@@ -40,7 +40,8 @@ class User extends Authenticatable
         'trainer_id',
         'bowling',
         'academy',
-        'rank'
+        'rank',
+        'dob'
     ];
 
     protected $hidden = [

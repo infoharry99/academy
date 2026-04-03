@@ -6,11 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 class StudentPerformance extends Model
 {
     protected $fillable = [
-        'user_id','runs','economy','wickets','total_matches',
-        'strike_rate','batting_average','high_score',
-        'centuries','half_centuries','catches',
-        'best_bowling','age','batting_style',
-        'bowling_style','academy'
+        'user_id','runs',
+        'economy',
+        'wickets',
+        'total_matches',
+        'strike_rate',
+        'batting_average',
+        'high_score',
+        'centuries',
+        'half_centuries',
+        'catches',
+        'best_bowling',
+        'age',
+        'batting_style',
+        'bowling_style',
+        'academy',
+        'balls_faced',
+        'overs_bowled',
+        'runs_conceded'
     ];
     public function user()
     {

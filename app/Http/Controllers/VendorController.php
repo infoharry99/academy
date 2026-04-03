@@ -40,16 +40,7 @@ class VendorController extends Controller
     $productIds = Product::where('vendor_id', $vendorId)->pluck('id');
     $courseIds = Course::where('vendor_id', $vendorId)->pluck('id');
 
-    $totalOrders = OrderItem::where(function ($q) use ($productIds, $courseIds) {
-        $q->where(function ($q2) use ($productIds) {
-            $q2->where('type', 'training')
-               ->whereIn('item_id', $productIds);
-        })
-        ->orWhere(function ($q2) use ($courseIds) {
-            $q2->where('type', 'course')
-               ->whereIn('item_id', $courseIds);
-        });
-    })->count();
+    $totalOrders = Payment::where('vendor_id', $vendorId)->count();
 
    
 
