@@ -1,6 +1,6 @@
 <header>
   <div class="header-inner">
-    <a href="/" class="logo"><span>Adnan Cricket Academy  </span></a>
+    <a href="/" class="logo"><span>Academy  </span></a>
     <nav>
       <a href="/">Home</a>
 

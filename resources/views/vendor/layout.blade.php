@@ -299,7 +299,7 @@
   <aside class="sidebar">
 
     <div class="sidebar-brand">
-      <div class="sidebar-logo">🏪 <span>Adnan Cricket Academy</span></div>
+      <div class="sidebar-logo">🏪 <span>Academy</span></div>
       <div class="sidebar-sub">Vendor Panel</div>
     </div>
 
@@ -410,7 +410,7 @@
 
     <!-- Footer -->
     <div class="panel-footer">
-      <span>© <strong>Adnan Cricket Academy</strong> Vendor Panel 2026</span>
+      <span>© <strong>Academy</strong> Vendor Panel 2026</span>
       <span style="font-size:0.75rem;color:var(--text-muted)">Need help? Contact support</span>
     </div>
 

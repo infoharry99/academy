@@ -142,7 +142,7 @@
         <div
             class="border-t border-white/10 mt-12 pt-6 text-center text-gray-400 text-sm"
         >
-            © 2024 Adnan Cricket Academy.
+            © 2024 Academy.
             All rights reserved.
         </div>
 
