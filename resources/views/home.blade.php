@@ -59,7 +59,7 @@
 
         <!-- ================= COURSES ================= -->
         <div class="mb-20">
-            <h3 class="text-2xl font-bold mb-8">🏋️ Trainings</h3>
+           <h3 class="text-2xl font-bold mb-8">🎓 Coaching Courses</h3>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
@@ -115,7 +115,7 @@
             <div class="text-center mt-10">
                 <a href="/all-courses"
                    class="border px-6 py-2 rounded-lg hover:bg-gray-200">
-                    View All Trainings →
+                    View All Courses →
                 </a>
             </div>
         </div>
@@ -216,11 +216,9 @@
                 </h2>
 
                 <p class="text-gray-600 mt-6 leading-relaxed">
-                    Elite Cricket Academy is a premier cricket training institution
-                    dedicated to nurturing raw talent into world-class cricketers.
-                    With state-of-the-art facilities, experienced coaches, and a
-                    data-driven approach, we provide comprehensive training
-                    programs for all age groups.
+                        Our Coaching Institute is committed to helping students excel in their academic journey across the UK curriculum.  
+                        We specialise in GCSE and A-Level preparation for Mathematics, Science, and English.  
+                        With experienced tutors, structured lesson plans, and regular assessments, we ensure every student builds strong foundations, improves confidence, and achieves top grades.
                 </p>
 
                 <!-- Features -->
@@ -231,7 +229,7 @@
                         <span class="w-3 h-3 bg-green-600 rounded-full"></span>
 
                         <span class="text-gray-800">
-                            Professional Coaches
+                           Expert Teachers  
                         </span>
                     </div>
 
@@ -239,7 +237,7 @@
                         <span class="w-3 h-3 bg-green-600 rounded-full"></span>
 
                         <span class="text-gray-800">
-                            Indoor Nets
+                            Small Batch Learning  
                         </span>
                     </div>
 
@@ -247,7 +245,7 @@
                         <span class="w-3 h-3 bg-green-600 rounded-full"></span>
 
                         <span class="text-gray-800">
-                            Video Analysis
+                           Regular Assessments 
                         </span>
                     </div>
 
@@ -255,7 +253,7 @@
                         <span class="w-3 h-3 bg-green-600 rounded-full"></span>
 
                         <span class="text-gray-800">
-                            Fitness Training
+                            Personalised Support  
                         </span>
                     </div>
 
@@ -297,12 +295,11 @@
                     </div>
 
                     <h3 class="text-xl font-semibold mb-3">
-                        Batting Mastery
+                        Mathematics (GCSE & A-Level)
                     </h3>
 
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        Master every shot from cover drives to pull shots
-                        with our specialized batting program.
+                       Master algebra, geometry, and problem-solving techniques aligned with UK curriculum.
                     </p>
 
                     <div class="flex justify-between text-sm text-gray-400 mt-6">
@@ -320,12 +317,11 @@
                     </div>
 
                     <h3 class="text-xl font-semibold mb-3">
-                        Fast Bowling
+                       Science (GCSE)
                     </h3>
 
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        Develop pace, swing, and accuracy with
-                        biomechanical analysis and targeted drills.
+                        Comprehensive Physics, Chemistry, and Biology with practical understanding.
                     </p>
 
                     <div class="flex justify-between text-sm text-gray-400 mt-6">
@@ -343,12 +339,11 @@
                     </div>
 
                     <h3 class="text-xl font-semibold mb-3">
-                        Wicket Keeping
+                        A-Level Preparation
                     </h3>
 
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        Sharpen reflexes, learn positioning,
-                        and master the art of keeping.
+                        Advanced subject-focused coaching to achieve top grades and university readiness.
                     </p>
 
                     <div class="flex justify-between text-sm text-gray-400 mt-6">
@@ -366,12 +361,12 @@
                     </div>
 
                     <h3 class="text-xl font-semibold mb-3">
-                        Tournament Prep
+                       Computer & Digital Skills
+
                     </h3>
 
                     <p class="text-gray-300 text-sm leading-relaxed">
-                        Intensive match-simulation training designed
-                        to prepare players for competitive cricket.
+                       Build essential IT skills and basic programming knowledge for modern education.
                     </p>
 
                     <div class="flex justify-between text-sm text-gray-400 mt-6">
@@ -386,141 +381,117 @@
     </section>
 
 
-    <section id="achievements" class="bg-gray-100 py-24">
-        <div class="max-w-7xl mx-auto px-6">
+ <section id="achievements" class="bg-gray-100 py-24">
+    <div class="max-w-7xl mx-auto px-6">
 
-            <!-- Heading -->
+        <!-- Heading -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <p class="text-green-600 tracking-[0.25em] text-sm mb-4">
+                OUR RESULTS
+            </p>
 
-            <div class="text-center mb-16" data-aos="fade-up">
-                <p class="text-green-600 tracking-[0.25em] text-sm mb-4">
-                    OUR PRIDE
-                </p>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+                Student
+                <span class="text-yellow-500">
+                    Achievements
+                </span>
+            </h2>
+        </div>
 
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
-                    Player
-                    <span class="text-yellow-500">
-                        Achievements
-                    </span>
-                </h2>
+        <!-- Content -->
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+            <!-- Achievement List -->
+            <div class="space-y-6" data-aos="fade-right">
+
+                <!-- GCSE -->
+                <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
+                    <div class="text-yellow-500 font-bold text-lg w-28">
+                        GCSE Results
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">
+                            Over 90% of students achieved Grade 7+
+                        </h4>
+                        <p class="text-gray-500 text-sm">
+                            Excellent academic performance
+                        </p>
+                    </div>
+                </div>
+
+                <!-- A-Level -->
+                <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
+                    <div class="text-yellow-500 font-bold text-lg w-28">
+                        A-Level
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">
+                            Students secured A & A* grades
+                        </h4>
+                        <p class="text-gray-500 text-sm">
+                            Strong subject mastery
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Institute -->
+                <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
+                    <div class="text-yellow-500 font-bold text-lg w-28">
+                        Excellence
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">
+                            Recognised as a top-performing coaching institute
+                        </h4>
+                        <p class="text-gray-500 text-sm">
+                            Consistent high results
+                        </p>
+                    </div>
+                </div>
+
+                <!-- University -->
+                <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
+                    <div class="text-yellow-500 font-bold text-lg w-28">
+                        University
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">
+                            Students placed in leading UK universities
+                        </h4>
+                        <p class="text-gray-500 text-sm">
+                            Successful academic pathways
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Progress -->
+                <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
+                    <div class="text-yellow-500 font-bold text-lg w-28">
+                        Progress
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-900">
+                            Average improvement of 2+ grade levels
+                        </h4>
+                        <p class="text-gray-500 text-sm">
+                            Measurable student growth
+                        </p>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Content -->
-
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-
-                <!-- Achievement List -->
-
-                <div class="space-y-6" data-aos="fade-right">
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2024
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                National U-19 Championship
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                Winners
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2023
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                State Premier League
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                Runners-up
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2023
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                Best Academy Award
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                Regional
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2022
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                International Youth Cup
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                Semi-finalists
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2022
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                5 Players Selected
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                State Team
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center bg-white rounded-xl p-6 shadow-sm border">
-                        <div class="text-yellow-500 font-bold text-xl w-20">
-                            2021
-                        </div>
-
-                        <div>
-                            <h4 class="font-semibold text-gray-900">
-                                District Championship
-                            </h4>
-
-                            <p class="text-gray-500 text-sm">
-                                Winners
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Image -->
-
-                <div data-aos="fade-left">
-                    <img src="{{ asset('assets/trophy.jpg') }}" alt="Cricket Achievement"
-                        class="rounded-2xl shadow-lg w-full" />
-                </div>
-
+            <!-- Image -->
+            <div data-aos="fade-left">
+                <img src="{{ asset('assets/students.jpg') }}" 
+                     alt="Student Achievements"
+                     class="rounded-2xl shadow-lg w-full" />
             </div>
 
         </div>
-    </section>
+
+    </div>
+</section>
 
 
     <section id="gallery" class="py-24 hero-gradient">
@@ -623,17 +594,17 @@
                     </div>
 
                     <p class="text-gray-600 text-sm leading-relaxed italic">
-                        "The coaching here transformed my batting technique.
-                        I went from scoring 20s to consistent 50s in just 3 months."
+                      "The teaching approach here really helped me improve my Maths grades from a 5 to an 8 in GCSE. Highly recommended!"
+
                     </p>
 
                     <div class="mt-6">
                         <h4 class="font-semibold text-gray-900">
-                            Rahul Sharma
+                           — James Walker, GCSE Student
                         </h4>
 
                         <p class="text-sm text-gray-500">
-                            U-19 Player
+                          GCSE Student
                         </p>
                     </div>
                 </div>
@@ -647,14 +618,13 @@
                     </div>
 
                     <p class="text-gray-600 text-sm leading-relaxed italic">
-                        "The academy's approach to fitness and discipline
-                        is outstanding. My son has become more focused
-                        both on and off the field."
+                        "My daughter gained confidence in Science and achieved excellent GCSE results. The tutors are very supportive."
+
                     </p>
 
                     <div class="mt-6">
                         <h4 class="font-semibold text-gray-900">
-                            Priya Patel
+                           — Sarah Thompson, Parent
                         </h4>
 
                         <p class="text-sm text-gray-500">
@@ -672,18 +642,16 @@
                     </div>
 
                     <p class="text-gray-600 text-sm leading-relaxed italic">
-                        "The video analysis and data-driven coaching
-                        gave me insights I never had before.
-                        Truly world-class training."
+                       "The A-Level preparation was outstanding. I secured an A in Physics thanks to their structured teaching."
                     </p>
 
                     <div class="mt-6">
                         <h4 class="font-semibold text-gray-900">
-                            Amit Kumar
+                           — Daniel Evans, A-Level Student
                         </h4>
 
                         <p class="text-sm text-gray-500">
-                            State Player
+                             A-Level Student
                         </p>
                     </div>
                 </div>
@@ -697,18 +665,17 @@
                     </div>
 
                     <p class="text-gray-600 text-sm leading-relaxed italic">
-                        "Working at Elite Cricket Academy is a privilege.
-                        The infrastructure and support we get to train
-                        young talent is unmatched."
+                       "Professional and well-organised coaching. Regular feedback helped us track our child’s progress."
+
                     </p>
 
                     <div class="mt-6">
                         <h4 class="font-semibold text-gray-900">
-                            Deepak Singh
+                          — Emma Clarke, Parent
                         </h4>
 
                         <p class="text-sm text-gray-500">
-                            Coach
+                            Parent
                         </p>
                     </div>
                 </div>
