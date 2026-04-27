@@ -10,8 +10,8 @@
         <a href="/" class="flex items-center space-x-3">
           <span class="text-2xl">🏏</span>
           <h1 class="text-xl font-bold tracking-wider">
-            <span class="text-yellow-400">Adnan Cricket</span>
-            <span class="text-white">Academy</span>
+            <span class="text-yellow-400">Academy</span>
+            <!-- <span class="text-white">Academy</span> -->
           </h1>
         </a>
 
