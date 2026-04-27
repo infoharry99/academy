@@ -36,7 +36,7 @@
 
       🏏
       <span class="text-yellow-400">
-        Adnan  Academy
+       Academy
       </span>
 
     </h2>
@@ -53,7 +53,7 @@
 
   <nav class="flex-1 overflow-y-auto px-6 space-y-3">
 
-    <a
+    <!-- <a
        href="{{ route('dashboard') }}"
       class="flex items-center gap-3 px-4 py-3 rounded-lg transition
       {{ request()->routeIs('dashboard') 
@@ -61,7 +61,7 @@
         : 'hover:bg-white/10' }}"
     >
       <i class="fa-solid fa-chart-line"></i> Performance
-    </a>
+    </a> -->
 
     <a
       href="{{ route('matches') }}"
@@ -70,7 +70,7 @@
         ? 'bg-green-700/40 text-green-300' 
         : 'hover:bg-white/10' }}"
     >
-      <i class="fa-solid fa-trophy"></i> Matches
+      <i class="fa-solid fa-trophy"></i> Classes
     </a>
 
     <a

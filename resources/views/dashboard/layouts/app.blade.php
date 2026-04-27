@@ -35,7 +35,7 @@
     </button>
 
     <h2 class="font-bold">
-      🏏 Adnan  Academy
+      Academy
     </h2>
 
   </header>
