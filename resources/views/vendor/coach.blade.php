@@ -200,7 +200,7 @@
     <div class="grid md:grid-cols-3 gap-6">
 
         <div class="bg-blue-50 p-5 rounded-xl border">
-            <h3 class="font-semibold mb-2">🏟 Adnan Academy</h3>
+            <h3 class="font-semibold mb-2">🏟 Tutor Academy</h3>
             <p class="text-sm text-gray-600">5 Turf Pitches • 120 Players</p>
         </div>
 

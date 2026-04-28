@@ -227,7 +227,7 @@
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
 
         <div style="background:#eef1fe; padding:16px; border-radius:12px;">
-            <div style="font-weight:600;">Adnan Main Ground</div>
+            <div style="font-weight:600;">Tutor Hub</div>
             <div style="font-size:13px; color:#666;">UK</div>
             <div style="font-size:12px; color:#999;">5 Practice Pitches</div>
         </div>
@@ -264,7 +264,7 @@
 
             <tr>
                 <td style="padding:10px;">Monday</td>
-                <td>Adnan Ground</td>
+                <td>Tutor Hub</td>
                 <td>6 AM - 9 AM</td>
             </tr>
 
@@ -276,7 +276,7 @@
 
             <tr>
                 <td style="padding:10px;">Wednesday</td>
-                <td>Adnan Ground</td>
+                <td>Tutor Hub</td>
                 <td>6 AM - 9 AM</td>
             </tr>
 
@@ -294,7 +294,7 @@
 
             <tr>
                 <td style="padding:10px;">Saturday</td>
-                <td>Adnan Ground</td>
+                <td>Tutor Hub</td>
                 <td>6 AM - 11 AM</td>
             </tr>
 
@@ -308,15 +308,15 @@
     <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
 
         <div style="background:#eef1fe; padding:10px; border-radius:10px;">
-            Adnan Ground — 60% Time
+            Tutor Hub — 60% Time
         </div>
 
         <div style="background:#dcfce7; padding:10px; border-radius:10px;">
-            Cricket Hub — 25% Time
+            Tutor Hub — 25% Time
         </div>
 
         <div style="background:#fef3c7; padding:10px; border-radius:10px;">
-            Cricket Center — 15% Time
+            Tutor Center — 15% Time
         </div>
 
     </div>
