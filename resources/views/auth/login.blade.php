@@ -9,7 +9,7 @@
     <div style="background:linear-gradient(135deg,#c8dff9,#ddeeff);padding:2rem 2rem 1.5rem;text-align:center">
         <div style="width:56px;height:56px;border-radius:50%;background:rgba(26,111,212,0.15);display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 1rem">⚡</div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:#0d1f3c">Welcome Back</div>
-        <div style="font-size:0.85rem;color:#4a6890;margin-top:4px">Sign in to your Sports Academy account</div>
+        <div style="font-size:0.85rem;color:#4a6890;margin-top:4px">Sign in to your Academy account</div>
     </div>
 
     {{-- Form body --}}
