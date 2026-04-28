@@ -24,19 +24,15 @@
                 <h3
                     class="text-lg font-bold mb-4"
                 >
-                    🏏
                     <span class="text-yellow-400">
-                        ADNAN 
+                        Coaching Hub 
                     </span>
-                    CRICKET
                 </h3>
 
                 <p
                     class="text-gray-300 text-sm leading-relaxed"
                 >
-                    Building champions since 2009.
-                    World-class cricket training
-                    for all ages.
+                    Instillize your game with coaching hub.
                 </p>
             </div>
 
@@ -102,10 +98,10 @@
                 <ul
                     class="space-y-3 text-gray-300 text-sm"
                 >
-                    <li>Batting</li>
-                    <li>Bowling</li>
-                    <li>Fielding</li>
-                    <li>Fitness</li>
+                    <li>Maths</li>
+                    <li>Science</li>
+                    <li>English</li>
+                    <li>History</li>
                 </ul>
             </div>
 
@@ -122,7 +118,7 @@
                     class="space-y-3 text-gray-300 text-sm"
                 >
                     <li>
-                        <i class="fa-solid fa-location-dot"></i> Sports Complex, Main Road
+                        <i class="fa-solid fa-location-dot"></i> Complex, Main Road
                     </li>
 
                     <li>
