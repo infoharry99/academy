@@ -85,7 +85,7 @@
     <div class="mt-10">
 
         <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
-            🏏 Match
+             Match
             <span class="text-yellow-500">
                 Statistics
             </span>
@@ -99,7 +99,7 @@
             <div class="bg-white p-6 rounded-xl shadow text-center">
 
                 <div class="text-3xl mb-2">
-                    🏏
+                    
                 </div>
 
                 <h3 class="text-3xl font-bold">

@@ -41,7 +41,7 @@
 
     <div class="flex items-center space-x-3">
 
-      <span class="text-2xl">🏏</span>
+      <span class="text-2xl"></span>
 
       <h1 class="text-xl font-bold tracking-wider">
         <span class="text-yellow-400">ELITE</span>

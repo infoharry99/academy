@@ -303,7 +303,7 @@
 </div>
 <div style="background:#fff; border:1px solid var(--border); border-radius:20px; padding:22px; margin-top:24px;">
 
-    <div class="section-heading">🏏 Coaching Distribution</div>
+    <div class="section-heading"> Coaching Distribution</div>
 
     <div style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
 

@@ -34,7 +34,7 @@
 
     <h2 class="text-xl font-bold">
 
-      🏏
+      
       <span class="text-yellow-400">
        Academy
       </span>

@@ -85,7 +85,7 @@
         <div class="grid md:grid-cols-3 gap-6">
 
             <div class="bg-white p-6 rounded-xl shadow text-center">
-                🏏
+                
                 <h3 class="text-2xl font-bold">{{ $performance->total_matches ?? 0 }}</h3>
                 <p class="text-gray-500 text-sm">Matches</p>
             </div>

@@ -42,7 +42,7 @@
 
         <!-- CARD -->
         <div class="bg-white p-5 rounded-xl shadow border">
-           <h3 class="font-semibold mb-3">🏏 James Anderson</h3>
+           <h3 class="font-semibold mb-3"> James Anderson</h3>
 
             <div class="space-y-2 text-sm">
                 <p>Batting Sessions: <strong>22</strong></p>

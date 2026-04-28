@@ -308,7 +308,7 @@
                     
                     <div class="form-section">
                         <h2 class="section-title">
-                            <span class="section-icon">🏏</span>
+                            <span class="section-icon"></span>
                             Performance Stats
                         </h2>
 

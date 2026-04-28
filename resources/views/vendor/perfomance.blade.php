@@ -43,7 +43,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
         <div class="bg-white p-6 rounded-xl border shadow-sm">
-            <h3 class="font-semibold mb-4">🏏 Batting Performance</h3>
+            <h3 class="font-semibold mb-4"> Batting Performance</h3>
             <canvas id="battingChart"></canvas>
         </div>
 
